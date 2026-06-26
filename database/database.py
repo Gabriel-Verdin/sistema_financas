@@ -41,18 +41,18 @@ conn.commit()
 
 # ========================= Teste ========================= (Funciona)
 
-# # Inserir categoria
-# cursor.execute("INSERT INTO categoria (nome, tipo_padrao) VALUES (?, ?)", ('Uber', 'Despesa')) # 1
-# cursor.execute("INSERT INTO categoria (nome, tipo_padrao) VALUES (?, ?)", ('Salário', 'Receita')) # 2
-# cursor.execute("INSERT INTO categoria (nome, tipo_padrao) VALUES (?, ?)", ('Ifood', 'Despesa')) # 3
-# conn.commit()
+# Inserir categoria
+cursor.execute("INSERT INTO categoria (nome, tipo_padrao) VALUES (?, ?)", ('Uber', 'Despesa')) # 1
+cursor.execute("INSERT INTO categoria (nome, tipo_padrao) VALUES (?, ?)", ('Salário', 'Receita')) # 2
+cursor.execute("INSERT INTO categoria (nome, tipo_padrao) VALUES (?, ?)", ('Ifood', 'Despesa')) # 3
+conn.commit()
 
-# # Inserir forma_pagamento
-# cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('Crédito')") # 1
-# cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('Débito')") # 2
-# cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('PIX')") # 3
-# cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('Dinheiro')") # 4
-# conn.commit()
+# Inserir forma_pagamento
+cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('Crédito')") # 1
+cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('Débito')") # 2
+cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('PIX')") # 3
+cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('Dinheiro')") # 4
+conn.commit()
 
 # # Inserir transação
 # cursor.execute("""

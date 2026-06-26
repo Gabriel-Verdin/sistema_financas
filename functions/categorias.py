@@ -1,0 +1,27 @@
+import sqlite3
+
+conn = sqlite3.connect("financas.db")
+cursor = conn.cursor()
+
+# Listar categorias
+def listar_categorias():
+    cursor.execute("SELECT id_categoria, nome FROM categoria")
+    categorias = cursor.fetchall()
+    
+    print('Categorias Disponíveis:')
+    for cat in categorias:
+        print(f'{cat[0]} - {cat[1]}')
+    
+    return categorias
+
+# Escolher categoria
+def escolher_categoria():
+    categorias = listar_categorias()
+
+    escolha = int(input('Digite o ID da categoria desejada: '))
+
+    return escolha
+
+# Exemplo 
+id_categoria_escolhida = escolher_categoria()
+print(f'Você escolheu a categoria com id {id_categoria_escolhida}')
