@@ -3,7 +3,7 @@ import sqlite3
 conn = sqlite3.connect("financas.db")
 cursor = conn.cursor()
 
-# Listar categorias
+# ========== Listar Categoria ==========
 def listar_categorias():
     cursor.execute("SELECT id_categoria, nome FROM categoria")
     categorias = cursor.fetchall()
@@ -14,14 +14,21 @@ def listar_categorias():
     
     return categorias
 
-# Escolher categoria
-def escolher_categoria():
-    categorias = listar_categorias()
+# ========== Cadastrar Categoria ==========
+def cadastrar_categoria(nova_categoria, tipo_nova_categoria = None):
+    cursor.execute("INSERT INTO categoria (nome, tipo_padrao) VALUES (?, ?)", (nova_categoria, tipo_nova_categoria))
 
-    escolha = int(input('Digite o ID da categoria desejada: '))
+    conn.commit()
+    print('Categoria adicionada com sucesso!')
 
-    return escolha
+# # Escolher categoria
+# def escolher_categoria():
+#     categorias = listar_categorias()
+
+#     escolha = int(input('Digite o ID da categoria desejada: '))
+
+#     return escolha
 
 # Exemplo 
-id_categoria_escolhida = escolher_categoria()
-print(f'Você escolheu a categoria com id {id_categoria_escolhida}')
+# id_categoria_escolhida = escolher_categoria()
+# print(f'Você escolheu a categoria com id {id_categoria_escolhida}')
