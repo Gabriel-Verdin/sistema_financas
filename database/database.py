@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS transacao (
     id_forma_pagamento TEXT,
     valor REAL NOT NULL,
     entrada_saida TEXT,
-    FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria),
-    FOREIGN KEY (id_forma_pagamento) REFERENCES forma_pagamento (id_forma_pagamento)
+    FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria) ON DELETE CASCADE,
+    FOREIGN KEY (id_forma_pagamento) REFERENCES forma_pagamento (id_forma_pagamento) ON DELETE CASCADE
 )
 """)
 conn.commit()

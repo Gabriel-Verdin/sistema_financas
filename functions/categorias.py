@@ -36,6 +36,12 @@ def editar_categoria(id_categoria, novo_nome = None, novo_tipo = None):
     conn.commit()
     print('Categoria atualizada com sucesso!')
 
+# ========== Apagar Categoria ==========
+def apagar_categoria(id_categoria):
+    cursor.execute("DELETE FROM categoria WHERE id_categoria = ?", (id_categoria,))
+
+    conn.commit()
+    print('Categoria apagada com sucesso!')
 # # Escolher categoria
 # def escolher_categoria():
 #     categorias = listar_categorias()
