@@ -21,6 +21,21 @@ def cadastrar_categoria(nova_categoria, tipo_nova_categoria = None):
     conn.commit()
     print('Categoria adicionada com sucesso!')
 
+# ========== Editar Categoria ==========
+def editar_categoria(id_categoria, novo_nome = None, novo_tipo = None):
+    if novo_nome and novo_tipo:
+        cursor.execute("UPDATE categoria SET nome = ?, tipo_padrao = ? WHERE id_categoria = ?", (novo_nome, novo_tipo, id_categoria))
+    elif novo_nome:
+        cursor.execute("UPDATE categoria SET nome = ? WHERE id_categoria = ?", (novo_nome, id_categoria))
+    elif novo_tipo:
+        cursor.execute("UPDATE categoria SET tipo_padrao = ? WHERE id_categoria = ?", (novo_tipo, id_categoria))
+    else:
+        print('Nenhuma alteração foi informada!')
+        return
+
+    conn.commit()
+    print('Categoria atualizada com sucesso!')
+
 # # Escolher categoria
 # def escolher_categoria():
 #     categorias = listar_categorias()

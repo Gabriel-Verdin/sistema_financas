@@ -6,7 +6,7 @@ print('==============================')
 
 print('[1] - Cadastrar Categoria')
 print('[2] - Listar Categoria')
-print('[3] - ')
+print('[3] - Editar Categoria')
 print('[4] - ')
 print('[5] - ')
 
@@ -24,6 +24,22 @@ try:
     elif escolha_int == 2:
         print()
         categorias.listar_categorias()
+    elif escolha_int == 3:
+        print()
+        categorias.listar_categorias()
+
+        print()
+        id_categoria_str = input('Escolha a categoria que deseja editar: ')
+
+        try:
+            id_categoria_int = int(id_categoria_str)
+
+            novo_nome = input('Digite o novo nome da categoria (nada para manter o atual): ')
+            novo_tipo = input('Digite o novo tipo da categoria (nada para manter o atual): ')
+
+            categorias.editar_categoria(id_categoria_int, novo_nome, novo_tipo)
+        except ValueError:
+            print('Por favor, digite uma categoria válida!')
 
 except ValueError:
     print('Por favor, digite uma escolha válida!')
