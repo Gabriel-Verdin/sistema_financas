@@ -16,6 +16,12 @@ def listar_forma_pagamento():
 
 # ========== Cadastrar Forma de Pagamento ==========
 def cadastrar_forma_pagamento(nova_forma_pagamento):
+
+    if nova_forma_pagamento == '':
+        print('Nome da forma de pagamento não pode ser vazio!')
+        print('Nova forma de pagamento não adicionada!')
+        return
+
     cursor.execute(f"INSERT INTO forma_pagamento (nome) VALUES ('{nova_forma_pagamento}')")
 
     conn.commit()
