@@ -1,73 +1,97 @@
+from functions import validacoes
 from functions import categorias
 
-print('==============================')
-print('===== Sistema Financeiro =====')
-print('==============================')
-
-print('[1] - Transações')
-print('[2] - Categorias')
-print('[3] - Formas de Pagamento')
-
-print()
-escolha_str = input('Escolha um dos Módulos: ')
-
 def modulo_categoria():
+    while True:
+        print()
+        print('======== CATEGORIAS ========')
+        print('[1] - Cadastrar Categoria')
+        print('[2] - Listar Categoria')
+        print('[3] - Editar Categoria')
+        print('[4] - Apagar Categoria')
+        print('[0] - Voltar')
 
-    print('[1] - Cadastrar Categoria')
-    print('[2] - Listar Categoria')
-    print('[3] - Editar Categoria')
-    print('[4] - Apagar Categoria')
+        print()
+        escolha_str = input('Escolha uma das opções: ')
+
+        escolha_int = validacoes.str_para_int(escolha_str)
+
+        if escolha_int is not None:
+            if escolha_int == 1:
+                nova_categoria = input('Digite a categoria que deseja adicionar: ')
+                tipo_nova_categoria = input('Digite o tipo padrão da categoria (Despesa/Receita/Nada): ')
+
+                categorias.cadastrar_categoria(nova_categoria, tipo_nova_categoria)
+
+            elif escolha_int == 2:
+                print()
+                categorias.listar_categorias()
+
+            elif escolha_int == 3:
+                print()
+                categorias.listar_categorias()
+
+                print()
+                id_categoria_str = input('Escolha a categoria que deseja editar: ')
+
+                id_categoria_int = validacoes.str_para_int(id_categoria_str)
+
+                if id_categoria_int is not None:
+                    novo_nome = input('Digite o novo nome da categoria (nada para manter o atual): ')
+                    novo_tipo = input('Digite o novo tipo da categoria (nada para manter o atual): ')
+
+                    categorias.editar_categoria(id_categoria_int, novo_nome, novo_tipo)
+
+            elif escolha_int == 4:
+                print()
+                categorias.listar_categorias()
+
+                print()
+                id_categoria_str = input('Escolha a categoria que deseja apagar: ')
+
+                id_categoria_int = validacoes.str_para_int(id_categoria_str)
+
+                if id_categoria_int is not None:
+                    categorias.apagar_categoria(id_categoria_int)
+
+            elif escolha_int == 0:
+                print('Voltando ao menu principal....')
+                break
+            
+            else:
+                print('Digite uma opção existente!')
+
+# ============================================== MAIN ==============================================  
+while True:
+    print('==============================')
+    print('===== SISTEMA FINANCEIRO =====')
+    print('==============================')
+
+    print('[1] - Transações')
+    print('[2] - Categorias')
+    print('[3] - Formas de Pagamento')
+    print('[0] - Sair')
 
     print()
-    escolha_str = input('Escolha uma das opções: ')
+    escolha_str = input('Escolha um dos Módulos: ')
 
-    try:
-        escolha_int = int(escolha_str)
+    escolha_int = validacoes.str_para_int(escolha_str)
 
+    if escolha_int is not None:
         if escolha_int == 1:
-            nova_categoria = input('Digite a categoria que deseja adicionar: ')
-            tipo_nova_categoria = input('Digite o tipo padrão da categoria (Despesa/Receita/Nada): ')
-
-            categorias.cadastrar_categoria(nova_categoria, tipo_nova_categoria)
+            print('Em andamento!')
+            print()
 
         elif escolha_int == 2:
-            print()
-            categorias.listar_categorias()
-
+            modulo_categoria()
+        
         elif escolha_int == 3:
+            print('Em andamento!')
             print()
-            categorias.listar_categorias()
 
-            print()
-            id_categoria_str = input('Escolha a categoria que deseja editar: ')
+        elif escolha_int == 0:
+            print('Saindo....')
+            break
 
-            try:
-                id_categoria_int = int(id_categoria_str)
-
-                novo_nome = input('Digite o novo nome da categoria (nada para manter o atual): ')
-                novo_tipo = input('Digite o novo tipo da categoria (nada para manter o atual): ')
-
-                categorias.editar_categoria(id_categoria_int, novo_nome, novo_tipo)
-            except ValueError:
-                print('Por favor, escolha uma categoria válida!')
-
-        elif escolha_int == 4:
-            print()
-            categorias.listar_categorias()
-
-            print()
-            id_categoria_str = input('Escolha a categoria que deseja apagar: ')
-
-            try:
-                id_categoria_int = int(id_categoria_str)
-
-                categorias.apagar_categoria(id_categoria_int)
-
-            except ValueError:
-                print('Por favor, escolha uma categoria válida!')
-
-    except ValueError:
-        print('Por favor, digite uma escolha válida!')
-
-if escolha_str == '3':
-    modulo_categoria()
+        else:
+            print('Digite uma opção existente')
