@@ -2,52 +2,84 @@ from functions import transacoes, validacoes, categorias, forma_pagamento
 
 # ============================================== TRANSACÃO ==============================================  
 def modulo_transacao():
-    print()
-    print('======== TRANSAÇÕES ========')
-    print('[1] - Cadastrar Transação')
-    print('[2] - Listar Transações')
-    print('[3] - Editar Transação')
-    print('[4] - Apagar Transação')
-    print('[0] - Voltar')
+    while True:
+        print()
+        print('======== TRANSAÇÕES ========')
+        print('[1] - Cadastrar Transação')
+        print('[2] - Listar Transações')
+        print('[3] - Editar Transação')
+        print('[4] - Apagar Transação')
+        print('[0] - Voltar')
 
-    print()
-    escolha_str = input('Escolha uma das opções: ')
+        print()
+        escolha_str = input('Escolha uma das opções: ')
 
-    escolha_int = validacoes.str_para_int(escolha_str)
+        escolha_int = validacoes.str_para_int(escolha_str)
 
-    if escolha_int is not None:
-        if escolha_int == 1:
-            data = input('Digite a data da transação (d/m/a) (vazio para data atual): ')
-            descricao = input('Digite a descrição da transação: ')
-
-            print()
-            categorias.listar_categorias()
-            id_categoria_str = input('Escolha uma categoria: ')
-
-            id_categoria_int = validacoes.str_para_int(id_categoria_str)
-
-            if id_categoria_int is not None:
-                tipo = input('Digite o tipo da transação (Despesa/Receita): ')
+        if escolha_int is not None:
+            if escolha_int == 1:
+                data = input('Digite a data da transação (d/m/a) (vazio para data atual): ')
+                descricao = input('Digite a descrição da transação: ')
 
                 print()
-                forma_pagamento.listar_forma_pagamento()
-                id_forma_pagamento_str = input('Escolha uma forma de pagamento: ')
+                categorias.listar_categorias()
+                id_categoria_str = input('Escolha uma categoria: ')
 
-                id_forma_pagamento_int = validacoes.str_para_int(id_forma_pagamento_str)
+                id_categoria_int = validacoes.str_para_int(id_categoria_str)
 
-                if id_forma_pagamento_int is not None:
-                    valor_str = input('Digite o valor da transação: ')
+                if id_categoria_int is not None:
+                    tipo = input('Digite o tipo da transação (Despesa/Receita): ')
 
-                    valor_float = validacoes.str_para_float(valor_str)
+                    print()
+                    forma_pagamento.listar_forma_pagamento()
+                    id_forma_pagamento_str = input('Escolha uma forma de pagamento: ')
 
-                    if valor_float is not None:
-                        entrada_saida = input('Digite se a transação é entrada ou saída: ')
+                    id_forma_pagamento_int = validacoes.str_para_int(id_forma_pagamento_str)
 
-                    transacoes.cadastrar_transacao(data, descricao, id_categoria_int, tipo, id_forma_pagamento_int, valor_float, entrada_saida)
-        
-        elif escolha_int == 2:
-            print()
-            transacoes.listar_transacoes()
+                    if id_forma_pagamento_int is not None:
+                        valor_str = input('Digite o valor da transação: ')
+
+                        valor_float = validacoes.str_para_float(valor_str)
+
+                        if valor_float is not None:
+                            entrada_saida = input('Digite se a transação é entrada ou saída: ')
+
+                        transacoes.cadastrar_transacao(data, descricao, id_categoria_int, tipo, id_forma_pagamento_int, valor_float, entrada_saida)
+            
+            elif escolha_int == 2:
+                print()
+                transacoes.listar_transacoes()
+
+            elif escolha_int == 3:
+                print()
+                transacoes.listar_transacoes()
+
+                id_transacao_str = input('Escolha a transação que deseja editar: ')
+
+                id_transacao_int = validacoes.str_para_int(id_transacao_str)
+
+                if id_transacao_int is not None:
+                    transacoes.editar_transacao(id_transacao_int)
+
+            elif escolha_int == 4:
+                print()
+                transacoes.listar_transacoes()
+
+                print()
+                id_transacao_str = input('Escolha a transação que deseja apagar: ')
+
+                id_transacao_int = validacoes.str_para_int(id_transacao_str)
+
+                if id_transacao_int is not None:
+                    transacoes.apagar_transacao(id_transacao_int)
+
+            elif escolha_int == 0:
+                print('Voltando ao menu principal....')
+                break
+                
+            else:
+                print('Digite uma opção existente!')
+
 
 # ============================================== CATEGORIA ==============================================  
 def modulo_categoria():
