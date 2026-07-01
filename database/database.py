@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS transacao (
     data TEXT NOT NULL,
     descricao TEXT,
     id_categoria INTEGER NOT NULL,
-    tipo TEXT,
     id_forma_pagamento TEXT,
     valor REAL NOT NULL,
     entrada_saida TEXT,
@@ -56,7 +55,7 @@ conn.commit()
 
 # Inserir transação
 cursor.execute("""
-INSERT INTO transacao (data, descricao, id_categoria, tipo, id_forma_pagamento, valor, entrada_saida)
-VALUES ('2026-06-20', 'Uber para CET', 1, 'Despesa', 1, 30.00, 'Saída')
+INSERT INTO transacao (data, descricao, id_categoria, id_forma_pagamento, valor, entrada_saida)
+VALUES ('2026-06-20', 'Uber para CET', 1, 1, 30.00, 'Saída')
 """)
 conn.commit()
