@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 conn = sqlite3.connect("financas.db")
 cursor = conn.cursor()
@@ -15,5 +16,11 @@ def listar_transacoes():
     return transacoes
 
 # ========== Cadastrar Transações ==========
-def cadastrar_transacao():
-    ...
+def cadastrar_transacao(data, descricao, id_categoria, tipo, id_forma_pagamento, valor, entrada_saida):
+    if not data:
+        data = datetime.now().strftime("%d-%m-%Y")
+
+    cursor.execute("INSERT INTO transacao (data, descricao, id_categoria, tipo, id_forma_pagamento, valor, entrada_saida) VALUES (?, ?, ?, ?, ?, ?, ?)", (data, descricao, id_categoria, tipo, id_forma_pagamento, valor, entrada_saida))
+
+    conn.commit()
+    print('Transação cadastrada com sucesso!')

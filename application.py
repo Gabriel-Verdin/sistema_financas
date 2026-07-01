@@ -17,7 +17,33 @@ def modulo_transacao():
 
     if escolha_int is not None:
         if escolha_int == 1:
-            ...
+            data = input('Digite a data da transação (d/m/a) (vazio para data atual): ')
+            descricao = input('Digite a descrição da transação: ')
+
+            print()
+            categorias.listar_categorias()
+            id_categoria_str = input('Escolha uma categoria: ')
+
+            id_categoria_int = validacoes.str_para_int(id_categoria_str)
+
+            if id_categoria_int is not None:
+                tipo = input('Digite o tipo da transação (Despesa/Receita): ')
+
+                print()
+                forma_pagamento.listar_forma_pagamento()
+                id_forma_pagamento_str = input('Escolha uma forma de pagamento: ')
+
+                id_forma_pagamento_int = validacoes.str_para_int(id_forma_pagamento_str)
+
+                if id_forma_pagamento_int is not None:
+                    valor_str = input('Digite o valor da transação: ')
+
+                    valor_float = validacoes.str_para_float(valor_str)
+
+                    if valor_float is not None:
+                        entrada_saida = input('Digite se a transação é entrada ou saída: ')
+
+                    transacoes.cadastrar_transacao(data, descricao, id_categoria_int, tipo, id_forma_pagamento_int, valor_float, entrada_saida)
         
         elif escolha_int == 2:
             print()
