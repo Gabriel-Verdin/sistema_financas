@@ -54,9 +54,9 @@ cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('PIX')") # 3
 cursor.execute("INSERT INTO forma_pagamento (nome) VALUES ('Dinheiro')") # 4
 conn.commit()
 
-# # Inserir transação
-# cursor.execute("""
-# INSERT INTO transacao (data, descricao, id_categoria, tipo, id_forma_pagamento, valor, entrada_saida)
-# VALUES ('2026-06-20', 'Uber para CET', 1, 'Despesa', 1, 30.00, 'Saída')
-# """)
-# conn.commit()
+# Inserir transação
+cursor.execute("""
+INSERT INTO transacao (data, descricao, id_categoria, tipo, id_forma_pagamento, valor, entrada_saida)
+VALUES ('2026-06-20', 'Uber para CET', 1, 'Despesa', 1, 30.00, 'Saída')
+""")
+conn.commit()

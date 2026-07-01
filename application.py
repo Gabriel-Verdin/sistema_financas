@@ -1,11 +1,35 @@
-from functions import validacoes, categorias, forma_pagamento
+from functions import transacoes, validacoes, categorias, forma_pagamento
 
+# ============================================== TRANSACÃO ==============================================  
+def modulo_transacao():
+    print()
+    print('======== TRANSAÇÕES ========')
+    print('[1] - Cadastrar Transação')
+    print('[2] - Listar Transações')
+    print('[3] - Editar Transação')
+    print('[4] - Apagar Transação')
+    print('[0] - Voltar')
+
+    print()
+    escolha_str = input('Escolha uma das opções: ')
+
+    escolha_int = validacoes.str_para_int(escolha_str)
+
+    if escolha_int is not None:
+        if escolha_int == 1:
+            ...
+        
+        elif escolha_int == 2:
+            print()
+            transacoes.listar_transacoes()
+
+# ============================================== CATEGORIA ==============================================  
 def modulo_categoria():
     while True:
         print()
         print('======== CATEGORIAS ========')
         print('[1] - Cadastrar Categoria')
-        print('[2] - Listar Categoria')
+        print('[2] - Listar Categorias')
         print('[3] - Editar Categoria')
         print('[4] - Apagar Categoria')
         print('[0] - Voltar')
@@ -60,12 +84,13 @@ def modulo_categoria():
             else:
                 print('Digite uma opção existente!')
 
+# ============================================== FORMA PAGAMENTO ==============================================  
 def modulo_forma_pagamento():
     while True:
         print()
         print('======== FORMAS DE PAGAMENTO ========')
         print('[1] - Cadastrar Forma de Pagamento')
-        print('[2] - Listar Forma de Pagamento')
+        print('[2] - Listar Formas de Pagamento')
         print('[3] - Editar Forma de Pagamento')
         print('[4] - Apagar Forma de Pagamento')
         print('[0] - Voltar')
@@ -118,7 +143,9 @@ def modulo_forma_pagamento():
             else:
                 print('Digite uma opção existente!')
 
+# ==================================================================================================  
 # ============================================== MAIN ==============================================  
+# ==================================================================================================  
 while True:
     print('==============================')
     print('===== SISTEMA FINANCEIRO =====')
@@ -136,8 +163,7 @@ while True:
 
     if escolha_int is not None:
         if escolha_int == 1:
-            print('Em andamento!')
-            print()
+            modulo_transacao()
 
         elif escolha_int == 2:
             modulo_categoria()
