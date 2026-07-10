@@ -1,4 +1,4 @@
-from functions import categorias, forma_pagamento
+from functions import categorias, forma_pagamento, transacoes
 import unicodedata 
 
 # Valida se valor que deveria ser int é realmente int
@@ -22,7 +22,7 @@ def escolha_valida_categoria(id_categoria):
     if id_categoria == None:
         print('Erro! Categoria escolhida é inválida!')
         return None
-    if id_categoria > len(categorias.listar_categorias()) or id_categoria < 0:
+    if id_categoria > len(categorias.listar_categorias()) or id_categoria <= 0:
         print('Erro! Categoria escolhida é inválida!')
         return None
     else:
@@ -34,13 +34,25 @@ def escolha_valida_forma_pagamento(id_forma_pagamento):
     if id_forma_pagamento == None:
         print('Erro! Forma de pagamento escolhida é inválida!')
         return None
-    if id_forma_pagamento > len(forma_pagamento.listar_forma_pagamento()) or id_forma_pagamento < 0:
+    if id_forma_pagamento > len(forma_pagamento.listar_forma_pagamento()) or id_forma_pagamento <= 0:
         print('Erro! Forma de pagamento escolhida é inválida!')
         return None
     else:
         print('Forma de pagamento escolhida!')
         return True
     
+# Valida se a escolha da transação é válida ou não
+def escolha_valida_transacao(id_transacao):
+    if id_transacao == None:
+        print('Erro! Transação escolhida é inválida!')
+        return None
+    if id_transacao > len(transacoes.listar_transacoes()) or id_transacao <= 0:
+        print('Erro! Transação escolhida é inválida!')
+        return None
+    else:
+        print('Transação escolhida!')
+        return True
+
 # Remove acentos
 def remover_acentos(texto=str):
     return ''.join(

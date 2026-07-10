@@ -52,7 +52,6 @@ def modulo_transacao():
                                 entrada_saida_sem_acento = validacoes.remover_acentos(entrada_saida)
 
                                 entrada_saida_sem_acento = validacoes.entrada_ou_saida(entrada_saida_sem_acento.lower())
-                                print(valor_float_valido)
 
                                 if entrada_saida_sem_acento is not None:
                                     transacoes.cadastrar_transacao(data, descricao, id_categoria_int, id_forma_pagamento_int, valor_float_valido, entrada_saida_sem_acento)
@@ -68,8 +67,9 @@ def modulo_transacao():
                 id_transacao_str = input('Escolha a transação que deseja editar: ')
 
                 id_transacao_int = validacoes.str_para_int(id_transacao_str)
+                id_transacao_valida = validacoes.escolha_valida_transacao(id_transacao_int)
 
-                if id_transacao_int is not None:
+                if id_transacao_int is not None and id_transacao_valida is not None:
                     transacoes.editar_transacao(id_transacao_int)
 
             elif escolha_int == 4:
@@ -80,8 +80,9 @@ def modulo_transacao():
                 id_transacao_str = input('Escolha a transação que deseja apagar: ')
 
                 id_transacao_int = validacoes.str_para_int(id_transacao_str)
+                id_transacao_valida = validacoes.escolha_valida_transacao(id_transacao_int)
 
-                if id_transacao_int is not None:
+                if id_transacao_int is not None and id_transacao_valida is not None:
                     transacoes.apagar_transacao(id_transacao_int)
 
             elif escolha_int == 0:
