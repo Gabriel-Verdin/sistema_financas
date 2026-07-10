@@ -199,8 +199,9 @@ def modulo_forma_pagamento():
                 id_forma_pagamento_str = input('Escolha a forma de pagamento que deseja editar: ')
 
                 id_forma_pagamento_int = validacoes.str_para_int(id_forma_pagamento_str)
+                id_forma_pagamento_valida = validacoes.escolha_valida_forma_pagamento(id_forma_pagamento_int)
 
-                if id_forma_pagamento_int is not None:
+                if id_forma_pagamento_int is not None and id_forma_pagamento_valida is not None:
                     novo_nome = input('Digite o novo nome da forma de pagamento (nada para manter o atual): ')
 
                     forma_pagamento.editar_forma_pagamento(id_forma_pagamento_int, novo_nome)
@@ -213,8 +214,9 @@ def modulo_forma_pagamento():
                 id_forma_pagamento_str = input('Escolha a forma de pagamento que deseja apagar: ')
 
                 id_forma_pagamento_int = validacoes.str_para_int(id_forma_pagamento_str)
-
-                if id_forma_pagamento_int is not None:
+                id_forma_pagamento_valida = validacoes.escolha_valida_forma_pagamento(id_forma_pagamento_int)
+                
+                if id_forma_pagamento_int is not None and id_forma_pagamento_valida is not None:
                     forma_pagamento.apagar_forma_pagamento(id_forma_pagamento_int)
 
             elif escolha_int == 0:
