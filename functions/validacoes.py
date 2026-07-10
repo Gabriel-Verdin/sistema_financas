@@ -94,7 +94,7 @@ def validar_valor(valor):
 # Valida entrada da data
 def validar_data(data_str):
     if not data_str:
-        return None
+        return datetime.now().strftime("%d-%m-%Y")
     
     try:
         # Tenta converter para o formato dia/mês/ano

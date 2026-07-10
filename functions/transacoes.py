@@ -53,11 +53,11 @@ def editar_transacao(id_transacao):
 
         if escolha_int is not None:
             if escolha_int == 1: # Data
-                nova_data = input('Digite uma nova data (Vazio para hoje): ')
-                if not nova_data:
-                    nova_data = datetime.now().strftime("%d-%m-%Y")
+                nova_data_str = input('Digite uma nova data (Vazio para hoje): ')
+                nova_data = validacoes.validar_data(nova_data_str)
 
-                cursor.execute("UPDATE transacao SET data = ? WHERE id_transacao = ?", (nova_data, id_transacao))
+                if nova_data is not None:
+                    cursor.execute("UPDATE transacao SET data = ? WHERE id_transacao = ?", (nova_data, id_transacao))
 
             elif escolha_int == 2: # Descrição
                 nova_descricao = input('Digite uma nova descrição: ')
@@ -71,8 +71,9 @@ def editar_transacao(id_transacao):
                 nova_categoria_str = input('Escolha a nova categoria: ')
 
                 nova_categoria_int = validacoes.str_para_int(nova_categoria_str)
+                nova_categoria_valida = validacoes.escolha_valida_categoria(nova_categoria_int)
 
-                if nova_categoria_int is not None:
+                if nova_categoria_int is not None and nova_categoria_valida is not None:
                     cursor.execute("UPDATE transacao SET id_categoria = ? WHERE id_transacao = ?", (nova_categoria_int, id_transacao))
 
             elif escolha_int == 4: # Forma de Pagamento
@@ -82,8 +83,9 @@ def editar_transacao(id_transacao):
                 nova_forma_pagamento_str = input('Escolha a nova categoria: ')
 
                 nova_forma_pagamento_int = validacoes.str_para_int(nova_forma_pagamento_str)
+                nova_forma_pagamento_valida = validacoes.escolha_valida_forma_pagamento(nova_forma_pagamento_int)
 
-                if nova_forma_pagamento_int is not None:
+                if nova_forma_pagamento_int is not None and nova_forma_pagamento_int is not None:
                     cursor.execute("UPDATE transacao SET id_forma_pagamento = ? WHERE id_transacao = ?", (nova_forma_pagamento_int, id_transacao))
 
             elif escolha_int == 5: # Valor
@@ -92,12 +94,18 @@ def editar_transacao(id_transacao):
                 novo_valor_float = validacoes.str_para_float(novo_valor_str)
 
                 if novo_valor_float is not None:
-                    cursor.execute("UPDATE transacao SET valor = ? WHERE id_transacao = ?", (novo_valor_float, id_transacao))
+                    novo_valor_valido = validacoes.validar_valor(novo_valor_float)
+                    
+                    if novo_valor_valido is not None:
+                        cursor.execute("UPDATE transacao SET valor = ? WHERE id_transacao = ?", (novo_valor_float, id_transacao))
 
             elif escolha_int == 6:
                 nova_entrada_Saida = input('Digite se é estrada ou saída: ')
+                nova_entrada_Saida_sem_acento = validacoes.remover_acentos(nova_entrada_Saida)
+                nova_entrada_Saida_sem_acento = validacoes.entrada_ou_saida(nova_entrada_Saida_sem_acento.lower())
 
-                cursor.execute("UPDATE transacao SET entrada_saida = ? WHERE id_transacao = ?", (nova_entrada_Saida, id_transacao))
+                if nova_entrada_Saida_sem_acento is not None:
+                    cursor.execute("UPDATE transacao SET entrada_saida = ? WHERE id_transacao = ?", (nova_entrada_Saida, id_transacao))
 
             elif escolha_int == 0:
                 print('Nenhuma alteração realizada!')

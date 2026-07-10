@@ -18,10 +18,10 @@ def modulo_transacao():
 
         if escolha_int is not None:
             if escolha_int == 1:
-                data_str = input('Digite a data da transação (d/m/a) (vazio para data atual): ') # Falta validar formato
+                data_str = input('Digite a data da transação (d/m/a) (vazio para data atual): ')
                 data = validacoes.validar_data(data_str)
                 
-                if data is not None or not data_str: # Aceita vazio ou válido
+                if data is not None: # Aceita vazio ou válido
 
                     descricao = input('Digite a descrição da transação: ')
 
