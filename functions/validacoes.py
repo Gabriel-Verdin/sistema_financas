@@ -1,4 +1,5 @@
 from functions import categorias, forma_pagamento
+import unicodedata 
 
 # Valida se valor que deveria ser int é realmente int
 def str_para_int(valor_str):
@@ -40,6 +41,23 @@ def escolha_valida_forma_pagamento(id_forma_pagamento):
         print('Forma de pagamento escolhida!')
         return True
     
+# Remove acentos
+def remover_acentos(texto=str):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', texto) # Decompõe caracteres 'á' vira 'a' + '´'
+        if unicodedata.category(c) != 'Mn' # Mantém apenas o que não é acento
+    ) # join junta tudo (mão vira mao)
+
+# Valida se é entrada ou saída
+def entrada_ou_saida(entrada_saida_sem_acento=str):
+    if entrada_saida_sem_acento != 'entrada' and entrada_saida_sem_acento != 'saida':
+        print('Digite um texto válido (Entrada ou Saída)!')
+        return None
+    
+    else:
+        print('Salvo com sucesso!')
+        return entrada_saida_sem_acento.capitalize()
+
 # Valida se o tipo é despesa ou receita
 def despesa_ou_receita(tipo_categoria=str):
     if tipo_categoria != 'despesa' and tipo_categoria != 'receita':

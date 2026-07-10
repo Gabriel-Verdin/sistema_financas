@@ -46,8 +46,12 @@ def modulo_transacao():
 
                         if valor_float is not None:
                             entrada_saida = input('Digite se a transação é entrada ou saída: ')
+                            entrada_saida_sem_acento = validacoes.remover_acentos(entrada_saida)
 
-                        transacoes.cadastrar_transacao(data, descricao, id_categoria_int, id_forma_pagamento_int, valor_float, entrada_saida)
+                            entrada_saida_sem_acento = validacoes.entrada_ou_saida(entrada_saida_sem_acento.lower())
+
+                            if entrada_saida_sem_acento is not None:
+                                transacoes.cadastrar_transacao(data, descricao, id_categoria_int, id_forma_pagamento_int, valor_float, entrada_saida_sem_acento)
             
             elif escolha_int == 2:
                 print()
