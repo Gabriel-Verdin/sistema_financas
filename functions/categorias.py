@@ -51,15 +51,3 @@ def apagar_categoria(id_categoria):
 
     conn.commit()
     print('Categoria apagada com sucesso!')
-# # Escolher categoria
-# def escolher_categoria():
-#     categorias = listar_categorias()
-
-#     escolha = int(input('Digite o ID da categoria desejada: '))
-
-#     return escolha
-
-# Exemplo 
-# id_categoria_escolhida = escolher_categoria()
-# print(f'Você escolheu a categoria com id {id_categoria_escolhida}')
-

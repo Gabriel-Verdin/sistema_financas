@@ -30,7 +30,6 @@ def modulo_transacao():
                 categoria_valida = validacoes.escolha_valida_categoria(id_categoria_int)
 
                 if id_categoria_int is not None and categoria_valida is not None:
-                    tipo = input('Digite o tipo da transação (Despesa/Receita): ')
 
                     print()
                     forma_pagamento.mostrar_forma_pagamento()
@@ -48,7 +47,7 @@ def modulo_transacao():
                         if valor_float is not None:
                             entrada_saida = input('Digite se a transação é entrada ou saída: ')
 
-                        transacoes.cadastrar_transacao(data, descricao, id_categoria_int, tipo, id_forma_pagamento_int, valor_float, entrada_saida)
+                        transacoes.cadastrar_transacao(data, descricao, id_categoria_int, id_forma_pagamento_int, valor_float, entrada_saida)
             
             elif escolha_int == 2:
                 print()
@@ -104,7 +103,7 @@ def modulo_categoria():
         if escolha_int is not None:
             if escolha_int == 1:
                 nova_categoria = input('Digite a categoria que deseja adicionar: ')
-                tipo_nova_categoria = input('Digite o tipo padrão da categoria (Despesa/Receita/Nada): ')
+                tipo_nova_categoria = input('Digite o tipo padrão da categoria (Despesa/Receita): ')
 
                 categorias.cadastrar_categoria(nova_categoria, tipo_nova_categoria)
 
