@@ -4,15 +4,18 @@ conn = sqlite3.connect("financas.db")
 cursor = conn.cursor()
 
 # ========== Listar Categoria ==========
-def listar_categorias():
+def listar_categorias(): # Guarda os dados 
     cursor.execute("SELECT id_categoria, nome, tipo_padrao FROM categoria")
-    categorias = cursor.fetchall()
-    
+    return cursor.fetchall()
+
+# ========== Mostrar Categoria ==========
+def mostrar_categorias(): # Mosta as Categorias
+    categorias = listar_categorias()
+
     print('Categorias Disponíveis:')
     for cat in categorias:
         print(f'{cat[0]} - {cat[1]} | ({cat[2]})')
-    
-    return categorias
+
 
 # ========== Cadastrar Categoria ==========
 def cadastrar_categoria(nova_categoria, tipo_nova_categoria = None):
@@ -59,3 +62,4 @@ def apagar_categoria(id_categoria):
 # Exemplo 
 # id_categoria_escolhida = escolher_categoria()
 # print(f'Você escolheu a categoria com id {id_categoria_escolhida}')
+

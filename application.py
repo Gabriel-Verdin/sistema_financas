@@ -6,7 +6,7 @@ def modulo_transacao():
         print()
         print('======== TRANSAÇÕES ========')
         print('[1] - Cadastrar Transação')
-        print('[2] - Listar Transações')
+        print('[2] - Mostrar Transações')
         print('[3] - Editar Transação')
         print('[4] - Apagar Transação')
         print('[0] - Voltar')
@@ -22,21 +22,25 @@ def modulo_transacao():
                 descricao = input('Digite a descrição da transação: ')
 
                 print()
-                categorias.listar_categorias()
+                categorias.mostrar_categorias()
                 id_categoria_str = input('Escolha uma categoria: ')
 
                 id_categoria_int = validacoes.str_para_int(id_categoria_str)
 
-                if id_categoria_int is not None:
+                categoria_valida = validacoes.escolha_valida_categoria(id_categoria_int)
+
+                if id_categoria_int is not None and categoria_valida is not None:
                     tipo = input('Digite o tipo da transação (Despesa/Receita): ')
 
                     print()
-                    forma_pagamento.listar_forma_pagamento()
+                    forma_pagamento.mostrar_forma_pagamento()
                     id_forma_pagamento_str = input('Escolha uma forma de pagamento: ')
 
                     id_forma_pagamento_int = validacoes.str_para_int(id_forma_pagamento_str)
 
-                    if id_forma_pagamento_int is not None:
+                    forma_pagamento_valida = validacoes.escolha_valida_forma_pagamento(id_forma_pagamento_int)
+
+                    if id_forma_pagamento_int is not None and forma_pagamento_valida is not None:
                         valor_str = input('Digite o valor da transação: ')
 
                         valor_float = validacoes.str_para_float(valor_str)
@@ -48,11 +52,11 @@ def modulo_transacao():
             
             elif escolha_int == 2:
                 print()
-                transacoes.listar_transacoes()
+                transacoes.mostrar_transacoes()
 
             elif escolha_int == 3:
                 print()
-                transacoes.listar_transacoes()
+                transacoes.mostrar_transacoes()
 
                 id_transacao_str = input('Escolha a transação que deseja editar: ')
 
@@ -63,7 +67,7 @@ def modulo_transacao():
 
             elif escolha_int == 4:
                 print()
-                transacoes.listar_transacoes()
+                transacoes.mostrar_transacoes()
 
                 print()
                 id_transacao_str = input('Escolha a transação que deseja apagar: ')
@@ -87,7 +91,7 @@ def modulo_categoria():
         print()
         print('======== CATEGORIAS ========')
         print('[1] - Cadastrar Categoria')
-        print('[2] - Listar Categorias')
+        print('[2] - Mostrar Categorias')
         print('[3] - Editar Categoria')
         print('[4] - Apagar Categoria')
         print('[0] - Voltar')
@@ -106,11 +110,11 @@ def modulo_categoria():
 
             elif escolha_int == 2:
                 print()
-                categorias.listar_categorias()
+                categorias.mostrar_categorias()
 
             elif escolha_int == 3:
                 print()
-                categorias.listar_categorias()
+                categorias.mostrar_categorias()
 
                 print()
                 id_categoria_str = input('Escolha a categoria que deseja editar: ')
@@ -125,7 +129,7 @@ def modulo_categoria():
 
             elif escolha_int == 4:
                 print()
-                categorias.listar_categorias()
+                categorias.mostrar_categorias()
 
                 print()
                 id_categoria_str = input('Escolha a categoria que deseja apagar: ')
@@ -148,7 +152,7 @@ def modulo_forma_pagamento():
         print()
         print('======== FORMAS DE PAGAMENTO ========')
         print('[1] - Cadastrar Forma de Pagamento')
-        print('[2] - Listar Formas de Pagamento')
+        print('[2] - Mostrar Formas de Pagamento')
         print('[3] - Editar Forma de Pagamento')
         print('[4] - Apagar Forma de Pagamento')
         print('[0] - Voltar')
@@ -166,11 +170,11 @@ def modulo_forma_pagamento():
 
             elif escolha_int == 2:
                 print()
-                forma_pagamento.listar_forma_pagamento()
+                forma_pagamento.mostrar_forma_pagamento()
 
             elif escolha_int == 3:
                 print()
-                forma_pagamento.listar_forma_pagamento()
+                forma_pagamento.mostrar_forma_pagamento()
 
                 print()
                 id_forma_pagamento_str = input('Escolha a forma de pagamento que deseja editar: ')
@@ -184,7 +188,7 @@ def modulo_forma_pagamento():
 
             elif escolha_int == 4:
                 print()
-                forma_pagamento.listar_forma_pagamento()
+                forma_pagamento.mostrar_forma_pagamento()
 
                 print()
                 id_forma_pagamento_str = input('Escolha a forma de pagamento que deseja apagar: ')

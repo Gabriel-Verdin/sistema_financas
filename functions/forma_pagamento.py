@@ -6,13 +6,15 @@ cursor = conn.cursor()
 # ========== Listar Forma de Pagamento ==========
 def listar_forma_pagamento():
     cursor.execute("SELECT id_forma_pagamento, nome FROM forma_pagamento")
-    formas_pagamento = cursor.fetchall()
+    return cursor.fetchall()
+
+# ========== Mostrar Forma de Pagamento ==========
+def mostrar_forma_pagamento():
+    formas_pagamento = listar_forma_pagamento()
 
     print("Formas de Pagamento desponíveis:")
     for forma in formas_pagamento:
         print(f'{forma[0]} - {forma[1]}')
-
-    return formas_pagamento
 
 # ========== Cadastrar Forma de Pagamento ==========
 def cadastrar_forma_pagamento(nova_forma_pagamento):

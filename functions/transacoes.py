@@ -14,13 +14,15 @@ def listar_transacoes():
     """)
     # t = tabela transacao
     # c = tabela categoria
-    transacoes = cursor.fetchall()
+    return cursor.fetchall()
 
+# ========== Mostrar Transações ==========
+def mostrar_transacoes():
+
+    transacoes = listar_transacoes()
     print('Transações:')
     for trans in transacoes:
         print(f'{trans[0]} - {trans[1]} - {trans[2]} - {trans[3]} - {trans[4]} - {trans[5]} - {trans[6]}')
-
-    return transacoes
 
 # ========== Cadastrar Transações ==========
 def cadastrar_transacao(data, descricao, id_categoria, id_forma_pagamento, valor, entrada_saida):
