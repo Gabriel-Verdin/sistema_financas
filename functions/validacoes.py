@@ -67,3 +67,12 @@ def despesa_ou_receita(tipo_categoria=str):
     else:
         print('Tipo salvo com sucesso!')
         return tipo_categoria.capitalize()
+    
+# Valida Valores de entrada e saída
+def validar_valor(valor):
+    if valor <= 0: 
+        print('Digite um valor válido (Maior que 0)')
+        return None
+
+    else:
+        return valor

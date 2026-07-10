@@ -18,7 +18,7 @@ def modulo_transacao():
 
         if escolha_int is not None:
             if escolha_int == 1:
-                data = input('Digite a data da transação (d/m/a) (vazio para data atual): ')
+                data = input('Digite a data da transação (d/m/a) (vazio para data atual): ') # Falta validar formato
                 descricao = input('Digite a descrição da transação: ')
 
                 print()
@@ -45,13 +45,17 @@ def modulo_transacao():
                         valor_float = validacoes.str_para_float(valor_str)
 
                         if valor_float is not None:
-                            entrada_saida = input('Digite se a transação é entrada ou saída: ')
-                            entrada_saida_sem_acento = validacoes.remover_acentos(entrada_saida)
+                            valor_float_valido = validacoes.validar_valor(valor_float)
+                            
+                            if valor_float_valido is not None:
+                                entrada_saida = input('Digite se a transação é entrada ou saída: ')
+                                entrada_saida_sem_acento = validacoes.remover_acentos(entrada_saida)
 
-                            entrada_saida_sem_acento = validacoes.entrada_ou_saida(entrada_saida_sem_acento.lower())
+                                entrada_saida_sem_acento = validacoes.entrada_ou_saida(entrada_saida_sem_acento.lower())
+                                print(valor_float_valido)
 
-                            if entrada_saida_sem_acento is not None:
-                                transacoes.cadastrar_transacao(data, descricao, id_categoria_int, id_forma_pagamento_int, valor_float, entrada_saida_sem_acento)
+                                if entrada_saida_sem_acento is not None:
+                                    transacoes.cadastrar_transacao(data, descricao, id_categoria_int, id_forma_pagamento_int, valor_float_valido, entrada_saida_sem_acento)
             
             elif escolha_int == 2:
                 print()
