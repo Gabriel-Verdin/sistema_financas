@@ -18,43 +18,47 @@ def modulo_transacao():
 
         if escolha_int is not None:
             if escolha_int == 1:
-                data = input('Digite a data da transação (d/m/a) (vazio para data atual): ') # Falta validar formato
-                descricao = input('Digite a descrição da transação: ')
+                data_str = input('Digite a data da transação (d/m/a) (vazio para data atual): ') # Falta validar formato
+                data = validacoes.validar_data(data_str)
+                
+                if data is not None or not data_str: # Aceita vazio ou válido
 
-                print()
-                categorias.mostrar_categorias()
-                id_categoria_str = input('Escolha uma categoria: ')
-
-                id_categoria_int = validacoes.str_para_int(id_categoria_str)
-
-                categoria_valida = validacoes.escolha_valida_categoria(id_categoria_int)
-
-                if id_categoria_int is not None and categoria_valida is not None:
+                    descricao = input('Digite a descrição da transação: ')
 
                     print()
-                    forma_pagamento.mostrar_forma_pagamento()
-                    id_forma_pagamento_str = input('Escolha uma forma de pagamento: ')
+                    categorias.mostrar_categorias()
+                    id_categoria_str = input('Escolha uma categoria: ')
 
-                    id_forma_pagamento_int = validacoes.str_para_int(id_forma_pagamento_str)
+                    id_categoria_int = validacoes.str_para_int(id_categoria_str)
 
-                    forma_pagamento_valida = validacoes.escolha_valida_forma_pagamento(id_forma_pagamento_int)
+                    categoria_valida = validacoes.escolha_valida_categoria(id_categoria_int)
 
-                    if id_forma_pagamento_int is not None and forma_pagamento_valida is not None:
-                        valor_str = input('Digite o valor da transação: ')
+                    if id_categoria_int is not None and categoria_valida is not None:
 
-                        valor_float = validacoes.str_para_float(valor_str)
+                        print()
+                        forma_pagamento.mostrar_forma_pagamento()
+                        id_forma_pagamento_str = input('Escolha uma forma de pagamento: ')
 
-                        if valor_float is not None:
-                            valor_float_valido = validacoes.validar_valor(valor_float)
-                            
-                            if valor_float_valido is not None:
-                                entrada_saida = input('Digite se a transação é entrada ou saída: ')
-                                entrada_saida_sem_acento = validacoes.remover_acentos(entrada_saida)
+                        id_forma_pagamento_int = validacoes.str_para_int(id_forma_pagamento_str)
 
-                                entrada_saida_sem_acento = validacoes.entrada_ou_saida(entrada_saida_sem_acento.lower())
+                        forma_pagamento_valida = validacoes.escolha_valida_forma_pagamento(id_forma_pagamento_int)
 
-                                if entrada_saida_sem_acento is not None:
-                                    transacoes.cadastrar_transacao(data, descricao, id_categoria_int, id_forma_pagamento_int, valor_float_valido, entrada_saida_sem_acento)
+                        if id_forma_pagamento_int is not None and forma_pagamento_valida is not None:
+                            valor_str = input('Digite o valor da transação: ')
+
+                            valor_float = validacoes.str_para_float(valor_str)
+
+                            if valor_float is not None:
+                                valor_float_valido = validacoes.validar_valor(valor_float)
+                                
+                                if valor_float_valido is not None:
+                                    entrada_saida = input('Digite se a transação é entrada ou saída: ')
+                                    entrada_saida_sem_acento = validacoes.remover_acentos(entrada_saida)
+
+                                    entrada_saida_sem_acento = validacoes.entrada_ou_saida(entrada_saida_sem_acento.lower())
+
+                                    if entrada_saida_sem_acento is not None:
+                                        transacoes.cadastrar_transacao(data, descricao, id_categoria_int, id_forma_pagamento_int, valor_float_valido, entrada_saida_sem_acento)
             
             elif escolha_int == 2:
                 print()

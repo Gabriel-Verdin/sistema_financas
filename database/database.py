@@ -56,6 +56,6 @@ conn.commit()
 # Inserir transação
 cursor.execute("""
 INSERT INTO transacao (data, descricao, id_categoria, id_forma_pagamento, valor, entrada_saida)
-VALUES ('2026-06-20', 'Uber para CET', 1, 1, 30.00, 'Saida')
+VALUES ('20-06-2026', 'Uber para CET', 1, 1, 30.00, 'Saida')
 """)
 conn.commit()

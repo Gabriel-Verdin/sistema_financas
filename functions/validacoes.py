@@ -1,5 +1,7 @@
-from functions import categorias, forma_pagamento, transacoes
 import unicodedata 
+from datetime import datetime
+
+from functions import categorias, forma_pagamento, transacoes
 
 # Valida se valor que deveria ser int é realmente int
 def str_para_int(valor_str):
@@ -88,3 +90,23 @@ def validar_valor(valor):
 
     else:
         return valor
+    
+# Valida entrada da data
+def validar_data(data_str):
+    if not data_str:
+        return None
+    
+    try:
+        # Tenta converter para o formato dia/mês/ano
+        data = datetime.strptime(data_str, "%d/%m/%Y")
+        hoje = datetime.now()
+
+        if data > hoje:
+            print('Data inválida! Não pode ser maior que hoje.')
+            return None
+    
+        return data.strftime("%d-%m-%Y") # Padroniza para salvar no banco
+    
+    except ValueError:
+        print('Data inválida! Use o formato válido (ex: 01/01/1990)')
+        return None
