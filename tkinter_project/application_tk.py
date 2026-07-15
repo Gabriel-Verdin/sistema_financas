@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from modules import modulo_transacao
+from modules import modulo_transacao, modulo_categoria, modulo_forma_pagamento
 
 # Janela Principal
 janela_principal = tk.Tk()
@@ -27,14 +27,31 @@ for frame in (tela_menu_principal, tela_modulo_transacao, tela_modulo_categoria,
 label_menu_principal = tk.Label(tela_menu_principal, text='===== Menu Principal =====')
 label_menu_principal.pack(pady=20)
 
-botao_modulo_transacao = tk.Button(tela_menu_principal, text='Módulo Transação', width=20, height=2, command=lambda: mostrar_tela(tela_modulo_transacao))
+botao_modulo_transacao = tk.Button(tela_menu_principal, text='Módulo Transação', width=25, height=2, command=lambda: mostrar_tela(tela_modulo_transacao))
 botao_modulo_transacao.pack()
+
+botao_modulo_categoria = tk.Button(tela_menu_principal, text='Módulo Categoria', width=25, height=2, command=lambda: mostrar_tela(tela_modulo_categoria))
+botao_modulo_categoria.pack()
+
+botao_modulo_forma_pagamento = tk.Button(tela_menu_principal, text='Módulo Forma de Pagamento', width=25, height=2, command=lambda: mostrar_tela(tela_modulo_forma_pagamento))
+botao_modulo_forma_pagamento.pack()
 
 # ================================================
 # =============== Módulo Transação ===============
 # ================================================
-modulo_transacao.frame_modulo_transacao(tela_modulo_transacao, mostrar_tela, tela_menu_principal)
+modulo_transacao.tela_modulo_transacao(tela_modulo_transacao, mostrar_tela, tela_menu_principal)
 
+# ================================================
+# =============== Módulo Categoria ===============
+# ================================================
+modulo_categoria.tela_modulo_categoria(tela_modulo_categoria, mostrar_tela, tela_menu_principal)
+
+# =========================================================
+# =============== Módulo Forma de Pagamento ===============
+# =========================================================
+modulo_forma_pagamento.tela_modulo_forma_pagamento(tela_modulo_forma_pagamento, mostrar_tela, tela_menu_principal)
+
+# 
 mostrar_tela(tela_menu_principal)
 
 janela_principal.mainloop()
