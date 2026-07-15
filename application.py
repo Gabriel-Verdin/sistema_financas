@@ -1,4 +1,5 @@
 from functions import transacoes, validacoes, categorias, forma_pagamento
+from database.database import inicializar_banco
 
 # ============================================== TRANSACÃO ==============================================  
 def modulo_transacao():
@@ -229,34 +230,38 @@ def modulo_forma_pagamento():
 # ==================================================================================================  
 # ============================================== MAIN ==============================================  
 # ==================================================================================================  
-while True:
-    print('==============================')
-    print('===== SISTEMA FINANCEIRO =====')
-    print('==============================')
+if __name__ == '__main__':
+ 
+    inicializar_banco() # Inicializa banco de dados
 
-    print('[1] - Transações')
-    print('[2] - Categorias')
-    print('[3] - Formas de Pagamento')
-    print('[0] - Sair')
+    while True:
+        print('==============================')
+        print('===== SISTEMA FINANCEIRO =====')
+        print('==============================')
 
-    print()
-    escolha_str = input('Escolha um dos Módulos: ')
+        print('[1] - Transações')
+        print('[2] - Categorias')
+        print('[3] - Formas de Pagamento')
+        print('[0] - Sair')
 
-    escolha_int = validacoes.str_para_int(escolha_str)
+        print()
+        escolha_str = input('Escolha um dos Módulos: ')
 
-    if escolha_int is not None:
-        if escolha_int == 1:
-            modulo_transacao()
+        escolha_int = validacoes.str_para_int(escolha_str)
 
-        elif escolha_int == 2:
-            modulo_categoria()
-        
-        elif escolha_int == 3:
-            modulo_forma_pagamento()
+        if escolha_int is not None:
+            if escolha_int == 1:
+                modulo_transacao()
 
-        elif escolha_int == 0:
-            print('Saindo....')
-            break
+            elif escolha_int == 2:
+                modulo_categoria()
+            
+            elif escolha_int == 3:
+                modulo_forma_pagamento()
 
-        else:
-            print('Digite uma opção existente')
+            elif escolha_int == 0:
+                print('Saindo....')
+                break
+
+            else:
+                print('Digite uma opção existente')
