@@ -36,14 +36,14 @@ botao_modulo_categoria.pack()
 botao_modulo_forma_pagamento = tk.Button(tela_menu_principal, text='Módulo Forma de Pagamento', width=25, height=2, command=lambda: mostrar_tela(tela_modulo_forma_pagamento))
 botao_modulo_forma_pagamento.pack()
 
-# ================================================
-# =============== Módulo Transação ===============
-# ================================================
+# ========================================================
+# =================== Módulo Transação ===================
+# ========================================================
 modulo_transacao.tela_modulo_transacao(tela_modulo_transacao, mostrar_tela, tela_menu_principal)
 
-# ================================================
-# =============== Módulo Categoria ===============
-# ================================================
+# ========================================================
+# =================== Módulo Categoria ===================
+# ========================================================
 modulo_categoria.tela_modulo_categoria(tela_modulo_categoria, mostrar_tela, tela_menu_principal)
 
 # =========================================================
