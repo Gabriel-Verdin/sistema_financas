@@ -33,6 +33,10 @@ frame_editar_categoria = criar_tela(janela_principal)
 frame_apagar_categoria = criar_tela(janela_principal)
 
 frame_modulo_forma_pagamento = criar_tela(janela_principal)
+frame_cadastrar_forma_pagamento = criar_tela(janela_principal)
+frame_mostrar_forma_pagamento = criar_tela(janela_principal)
+frame_editar_forma_pagamento = criar_tela(janela_principal)
+frame_apagar_forma_pagamento = criar_tela(janela_principal)
 
 # ==============================================
 # =============== Menu Principal ===============
@@ -62,7 +66,7 @@ modulo_categoria.tela_modulo_categoria(frame_modulo_categoria, mostrar_tela, fra
 # =========================================================
 # =============== Módulo Forma de Pagamento ===============
 # =========================================================
-modulo_forma_pagamento.tela_modulo_forma_pagamento(frame_modulo_forma_pagamento, mostrar_tela, frame_menu_principal)
+modulo_forma_pagamento.tela_modulo_forma_pagamento(frame_modulo_forma_pagamento, mostrar_tela, frame_menu_principal, frame_cadastrar_forma_pagamento, frame_mostrar_forma_pagamento, frame_editar_forma_pagamento, frame_apagar_forma_pagamento)
 
 # 
 mostrar_tela(frame_menu_principal)
