@@ -22,6 +22,9 @@ frame_menu_principal = criar_tela(janela_principal)
 
 frame_modulo_transacao = criar_tela(janela_principal)
 frame_cadastrar_transacao = criar_tela(janela_principal)
+frame_mostrar_transacoes = criar_tela(janela_principal)
+frame_editar_transacao = criar_tela(janela_principal)
+frame_apagar_transacao = criar_tela(janela_principal)
 
 frame_modulo_categoria = criar_tela(janela_principal)
 frame_cadastrar_categoria = criar_tela(janela_principal)
@@ -49,7 +52,7 @@ botao_modulo_forma_pagamento.pack()
 # ========================================================
 # =================== Módulo Transação ===================
 # ========================================================
-modulo_transacao.tela_modulo_transacao(frame_modulo_transacao, mostrar_tela, frame_menu_principal, frame_cadastrar_transacao)
+modulo_transacao.tela_modulo_transacao(frame_modulo_transacao, mostrar_tela, frame_menu_principal, frame_cadastrar_transacao, frame_mostrar_transacoes, frame_editar_transacao, frame_apagar_transacao)
 
 # ========================================================
 # =================== Módulo Categoria ===================
