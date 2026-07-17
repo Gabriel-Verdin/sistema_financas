@@ -1,25 +1,46 @@
 import tkinter as tk
 
-def tela_mostrar_categoria(tela_categoria, mostrar_tela, tela_modulo_categoria):
-    # Levanta a tela
-    mostrar_tela(tela_categoria)
-
-    # Limpa todos os widgets existentes
-    for widget in tela_categoria.winfo_children():
+# Função para limpar os widgets da tela
+def limpar_tela(tela):
+    for widget in tela.winfo_children():
         widget.destroy()
-    
+
+# =============== Tela Cadastrar Categorias ===============
+def tela_cadastrar_categoria(tela_cadastrar_categoria, mostrar_tela, tela_modulo_categoria):
+    # Levanta a tela
+    mostrar_tela(tela_cadastrar_categoria)
+
+    # Limpa widgets
+    limpar_tela(tela_cadastrar_categoria)
+
     # Cria os widgets novamente
-    label_cadastro = tk.Label(tela_categoria, text="Categorias")
+    label_cadastro = tk.Label(tela_cadastrar_categoria, text='Cadastro de Categorias')
     label_cadastro.pack(pady=20)
 
-    botao_voltar = tk.Button(tela_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
+    botao_voltar = tk.Button(tela_cadastrar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
 
-def tela_modulo_categoria(tela, mostrar_tela, tela_menu_principal, frame_mostrar_categorias):
+# =============== Tela Mostrar Categorias ===============
+def tela_mostrar_categoria(tela_mostrar_categoria, mostrar_tela, tela_modulo_categoria):
+    # Levanta a tela
+    mostrar_tela(tela_mostrar_categoria)
+
+    # Limpa todos os widgets existentes
+    limpar_tela(tela_mostrar_categoria)
+    
+    # Cria os widgets novamente
+    label_mostrar = tk.Label(tela_mostrar_categoria, text="Categorias")
+    label_mostrar.pack(pady=20)
+
+    botao_voltar = tk.Button(tela_mostrar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
+    botao_voltar.pack(pady=20)
+
+# =============== Tela Principal Categorias ===============
+def tela_modulo_categoria(tela, mostrar_tela, tela_menu_principal, frame_mostrar_categorias, frame_cadastrar_categoria):
     label_modulo_categoria = tk.Label(tela, text='===== Módulo Categoria =====')
     label_modulo_categoria.pack(pady=20)
 
-    botao_cadastrar_categoria = tk.Button(tela, text='Cadastrar Categoria', command=lambda: None)
+    botao_cadastrar_categoria = tk.Button(tela, text='Cadastrar Categoria', command=lambda: tela_cadastrar_categoria(frame_cadastrar_categoria, mostrar_tela, tela))
     botao_cadastrar_categoria.pack(pady=20)
 
     botao_mostrar_categoria = tk.Button(tela, text='Mostrar Categorias', command=lambda: tela_mostrar_categoria(frame_mostrar_categorias, mostrar_tela, tela))
