@@ -44,8 +44,8 @@ def tela_editar_categoria(tela_editar_categoria, mostrar_tela, tela_modulo_categ
     limpar_tela(tela_editar_categoria)
     
     # Cria os widgets novamente
-    label_mostrar = tk.Label(tela_editar_categoria, text="Categorias para Editar")
-    label_mostrar.pack(pady=20)
+    label_editar = tk.Label(tela_editar_categoria, text="Categorias para Editar")
+    label_editar.pack(pady=20)
 
     botao_voltar = tk.Button(tela_editar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
@@ -58,8 +58,8 @@ def tela_apagar_categoria(tela_apagar_categoria, mostrar_tela, tela_modulo_categ
     limpar_tela(tela_apagar_categoria)
     
     # Cria os widgets novamente
-    label_mostrar = tk.Label(tela_apagar_categoria, text="Categorias para Editar")
-    label_mostrar.pack(pady=20)
+    label_apagar = tk.Label(tela_apagar_categoria, text="Categorias para Editar")
+    label_apagar.pack(pady=20)
 
     botao_voltar = tk.Button(tela_apagar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
