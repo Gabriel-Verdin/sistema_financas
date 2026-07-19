@@ -1,5 +1,4 @@
 import sqlite3 
-from datetime import datetime
 
 # Conexão banco de dados
 conn = sqlite3.connect("financas.db")

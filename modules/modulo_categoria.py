@@ -5,6 +5,11 @@ def limpar_tela(tela):
     for widget in tela.winfo_children():
         widget.destroy()
 
+
+# =================
+# ===== Telas =====
+# =================
+
 # =============== Tela Cadastrar Categorias ===============
 def tela_cadastrar_categoria(tela_cadastrar_categoria, mostrar_tela, tela_modulo_categoria):
     # Levanta a tela
@@ -16,6 +21,12 @@ def tela_cadastrar_categoria(tela_cadastrar_categoria, mostrar_tela, tela_modulo
     # Cria os widgets novamente
     label_cadastro = tk.Label(tela_cadastrar_categoria, text='Cadastro de Categorias')
     label_cadastro.pack(pady=20)
+
+    entrada = tk.Entry(tela_cadastrar_categoria)
+    entrada.pack(pady=5)
+
+    botao_cadastrar = tk.Button(tela_cadastrar_categoria, text='Cadastrar', command=lambda: None) # cadastrar_categoria(entrada.get(), 'Receita'
+    botao_cadastrar.pack(pady=10)
 
     botao_voltar = tk.Button(tela_cadastrar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
@@ -31,6 +42,8 @@ def tela_mostrar_categoria(tela_mostrar_categoria, mostrar_tela, tela_modulo_cat
     # Cria os widgets novamente
     label_mostrar = tk.Label(tela_mostrar_categoria, text="Categorias")
     label_mostrar.pack(pady=20)
+
+    # mostrar_categorias(tela_mostrar_categoria) 
 
     botao_voltar = tk.Button(tela_mostrar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
