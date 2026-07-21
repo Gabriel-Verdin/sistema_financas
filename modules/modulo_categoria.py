@@ -1,4 +1,5 @@
 import tkinter as tk
+
 from functions import function_categorias
 from functions import function_validacoes
 
@@ -40,7 +41,7 @@ def tela_cadastrar_categoria(tela_cadastrar_categoria, mostrar_tela, tela_modulo
     botao_cadastrar = tk.Button(tela_cadastrar_categoria, text='Cadastrar', command=lambda: function_categorias.cadastrar_categoria(nome_categoria.get(), tipo_categoria.get())) # cadastrar_categoria(entrada.get(), 'Receita'
     botao_cadastrar.pack(pady=10)
 
-    # Voltar ao módulo
+    # Voltar ao Módulo
     botao_voltar = tk.Button(tela_cadastrar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
 
@@ -63,7 +64,11 @@ def tela_mostrar_categoria(tela_mostrar_categoria, mostrar_tela, tela_modulo_cat
     botao_voltar.pack(pady=20)
 
 # =============== Tela Editar Categorias ===============
-def tela_editar_categoria(tela_editar_categoria, mostrar_tela, tela_modulo_categoria):
+def navegar_para_edicao_categoria(mostrar_tela, frame_edicao_categorias, frame_editar_categoria):
+    tela_edicao_categorias(frame_edicao_categorias, mostrar_tela, frame_editar_categoria)
+
+
+def tela_editar_categoria(tela_editar_categoria, mostrar_tela, tela_modulo_categoria, tela_edicao_categorias):
     # Levanta a tela
     mostrar_tela(tela_editar_categoria)
 
@@ -74,9 +79,40 @@ def tela_editar_categoria(tela_editar_categoria, mostrar_tela, tela_modulo_categ
     label_editar = tk.Label(tela_editar_categoria, text="Categorias para Editar")
     label_editar.pack(pady=20)
 
+    # Função de mostrar categorias na tela
+    function_categorias.mostrar_categorias(tela_editar_categoria) 
+
+    # Escolha da Categoria
+    label_escolha = tk.Label(tela_editar_categoria, text='Escolha uma categoria para editar:')
+    label_escolha.pack(pady=10)
+    escolha_editar = tk.Entry(tela_editar_categoria)
+    escolha_editar.pack(padx=5)
+
+    botao_escolha = tk.Button(tela_editar_categoria, text='Escolher Categoria', command=lambda: navegar_para_edicao_categoria(mostrar_tela, tela_edicao_categorias, tela_editar_categoria))
+    botao_escolha.pack(pady=10)
+
+    # Voltar ao Módulo
     botao_voltar = tk.Button(tela_editar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
+    
+# =============== Tela de Edição de Categorias ===============
+def tela_edicao_categorias(tela_edicao_categorias, mostrar_tela, tela_editar_categoria):
+    # Levanta a tela
+    mostrar_tela(tela_edicao_categorias)
 
+    # Limpa todos os widgets existentes
+    limpar_tela(tela_edicao_categorias)
+
+    # Criar os widgets novamente
+    label_edicao = tk.Label(tela_edicao_categorias, text='Tela de Edição de Categorias')
+    label_edicao.pack(pady=20)
+
+    # Voltar ao Módulo
+    botao_voltar = tk.Button(tela_edicao_categorias, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_editar_categoria))
+    botao_voltar.pack(pady=20)
+
+
+# =============== Tela Apagar Categorias ===============
 def tela_apagar_categoria(tela_apagar_categoria, mostrar_tela, tela_modulo_categoria):
     # Levanta a tela
     mostrar_tela(tela_apagar_categoria)
@@ -92,7 +128,7 @@ def tela_apagar_categoria(tela_apagar_categoria, mostrar_tela, tela_modulo_categ
     botao_voltar.pack(pady=20)
 
 # =============== Tela Principal Categorias ===============
-def tela_modulo_categoria(tela, mostrar_tela, tela_menu_principal, frame_mostrar_categorias, frame_cadastrar_categoria, frame_editar_categoria, frame_apagar_categoria):
+def tela_modulo_categoria(tela, mostrar_tela, tela_menu_principal, frame_mostrar_categorias, frame_cadastrar_categoria, frame_editar_categoria, frame_edicao_categorias, frame_apagar_categoria):
     label_modulo_categoria = tk.Label(tela, text='===== Módulo Categoria =====')
     label_modulo_categoria.pack(pady=20)
 
@@ -102,7 +138,7 @@ def tela_modulo_categoria(tela, mostrar_tela, tela_menu_principal, frame_mostrar
     botao_mostrar_categoria = tk.Button(tela, text='Mostrar Categorias', command=lambda: tela_mostrar_categoria(frame_mostrar_categorias, mostrar_tela, tela))
     botao_mostrar_categoria.pack(pady=20)
 
-    botao_editar_categoria = tk.Button(tela, text='Editar Categoria', command=lambda: tela_editar_categoria(frame_editar_categoria, mostrar_tela, tela))
+    botao_editar_categoria = tk.Button(tela, text='Editar Categoria', command=lambda: tela_editar_categoria(frame_editar_categoria, mostrar_tela, tela, frame_edicao_categorias))
     botao_editar_categoria.pack(pady=20)
 
     botao_apagar_categoria = tk.Button(tela, text='Apagar Categoria', command=lambda: tela_apagar_categoria(frame_apagar_categoria, mostrar_tela, tela))

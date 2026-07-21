@@ -11,7 +11,7 @@ def str_para_int(valor_str):
     try:
         return int(valor_str)
     except ValueError:
-       print('Digite um valor válido')
+       messagebox.showerror('Erro','Digite um valor válido')
        return None
 
 # Valida se valor que deveria ser float é realmente int

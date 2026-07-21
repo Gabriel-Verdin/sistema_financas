@@ -43,3 +43,23 @@ def cadastrar_categoria(nova_categoria, tipo_nova_categoria):
     conn.commit()
     # print('Categoria adicionada com sucesso!')
     messagebox.showinfo('Sucesso','Categoria adicionada com sucesso!')
+
+# ========== Editar Categoria ==========
+def editar_categoria(id_categoria, novo_nome = None, novo_tipo = None):
+
+    id_categoria_valido = function_validacoes.str_para_int(id_categoria)
+    if id_categoria_valido == None:
+        return
+
+    if novo_nome and novo_tipo:
+        cursor.execute("UPDATE categoria SET nome = ?, tipo_padrao = ? WHERE id_categoria = ?", (novo_nome, novo_tipo, id_categoria_valido))
+    elif novo_nome:
+        cursor.execute("UPDATE categoria SET nome = ? WHERE id_categoria = ?", (novo_nome, id_categoria_valido))
+    elif novo_tipo:
+        cursor.execute("UPDATE categoria SET tipo_padrao = ? WHERE id_categoria = ?", (novo_tipo, id_categoria_valido))
+    else:
+        messagebox.showwarning('Aviso','Nenhuma alteração foi informada!')
+        return
+
+    conn.commit()
+    messagebox.showinfo('Sucesso','Categoria atualizada com sucesso!')
