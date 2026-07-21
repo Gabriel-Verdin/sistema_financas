@@ -65,10 +65,11 @@ def tela_mostrar_categoria(tela_mostrar_categoria, mostrar_tela, tela_modulo_cat
 
 # =============== Tela Editar Categorias ===============
 def navegar_para_edicao_categoria(escolha_editar, mostrar_tela, frame_edicao_categorias, frame_editar_categoria):
-    validacao = function_validacoes.escolha_valida_categoria(escolha_editar)
+    id_validado = function_validacoes.escolha_valida_categoria(escolha_editar)
 
-    if validacao:
-        tela_edicao_categorias(frame_edicao_categorias, mostrar_tela, frame_editar_categoria)
+    print(id_validado)
+    if id_validado:
+        tela_edicao_categorias(id_validado, frame_edicao_categorias, mostrar_tela, frame_editar_categoria)
 
 
 def tela_editar_categoria(tela_editar_categoria, mostrar_tela, tela_modulo_categoria, tela_edicao_categorias):
@@ -99,7 +100,7 @@ def tela_editar_categoria(tela_editar_categoria, mostrar_tela, tela_modulo_categ
     botao_voltar.pack(pady=20)
     
 # =============== Tela de Edição de Categorias ===============
-def tela_edicao_categorias(tela_edicao_categorias, mostrar_tela, tela_editar_categoria):
+def tela_edicao_categorias(id_validado, tela_edicao_categorias, mostrar_tela, tela_editar_categoria):
     # Levanta a tela
     mostrar_tela(tela_edicao_categorias)
 
@@ -109,6 +110,19 @@ def tela_edicao_categorias(tela_edicao_categorias, mostrar_tela, tela_editar_cat
     # Criar os widgets novamente
     label_edicao = tk.Label(tela_edicao_categorias, text='Tela de Edição de Categorias')
     label_edicao.pack(pady=20)
+
+    label_novo_nome = tk.Label(tela_edicao_categorias, text='Novo nome da categoria')
+    label_novo_nome.pack(pady=10)
+    novo_nome = tk.Entry(tela_edicao_categorias)
+    novo_nome.pack(pady=5)
+
+    label_novo_tipo = tk.Label(tela_edicao_categorias, text='Novo tipo da categoria')
+    label_novo_tipo.pack(pady=10)
+    novo_tipo = tk.Entry(tela_edicao_categorias)
+    novo_tipo.pack(pady=5)
+
+    botao_atualizar = tk.Button(tela_edicao_categorias, text='Atualizar Categoria', command=lambda: function_categorias.editar_categoria(id_validado, novo_nome.get(), novo_tipo.get()))
+    botao_atualizar.pack(pady=20)
 
     # Voltar ao Módulo
     botao_voltar = tk.Button(tela_edicao_categorias, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_editar_categoria))

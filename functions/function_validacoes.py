@@ -36,7 +36,7 @@ def escolha_valida_categoria(id_categoria):
     else:
         # messagebox.showinfo('Sucesso!', 'Categoria escolhida!')
         # print('Categoria escolhida!')
-        return True
+        return id_categoria_int
 
 # Valida se a escolha da forma de pagamento é válida ou não
 # def escolha_valida_forma_pagamento(id_forma_pagamento):
