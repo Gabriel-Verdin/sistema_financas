@@ -1,5 +1,6 @@
 import tkinter as tk
 from functions import function_categorias
+from functions import function_validacoes
 
 # Função para limpar os widgets da tela
 def limpar_tela(tela):
@@ -23,8 +24,13 @@ def tela_cadastrar_categoria(tela_cadastrar_categoria, mostrar_tela, tela_modulo
     label_cadastro = tk.Label(tela_cadastrar_categoria, text='Cadastro de Categorias')
     label_cadastro.pack(pady=20)
 
-    entrada = tk.Entry(tela_cadastrar_categoria)
-    entrada.pack(pady=5)
+    nome_categoria = tk.Entry(tela_cadastrar_categoria)
+    nome_categoria.pack(pady=5)
+
+    tipo_categoria = tk.Entry(tela_cadastrar_categoria)
+    tipo_categoria.pack(pady=5)
+
+    tipo_categoria_valido = function_validacoes.despesa_ou_receita(tipo_categoria.get()) # Melhorar Validação
 
     botao_cadastrar = tk.Button(tela_cadastrar_categoria, text='Cadastrar', command=lambda: None) # cadastrar_categoria(entrada.get(), 'Receita'
     botao_cadastrar.pack(pady=10)
