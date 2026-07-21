@@ -24,14 +24,18 @@ def str_para_float(valor_str):
     
 # Valida se a escolha da categoria é válida ou não
 def escolha_valida_categoria(id_categoria):
-    if id_categoria == None:
-        print('Erro! Categoria escolhida é inválida!')
+    id_categoria_int = str_para_int(id_categoria)
+    if id_categoria_int == None:
+        messagebox.showerror('Erro!', 'Categoria escolhida é inválida!')
+        # print('Erro! Categoria escolhida é inválida!')
         return None
-    if id_categoria > len(function_categorias.listar_categorias()) or id_categoria <= 0:
-        print('Erro! Categoria escolhida é inválida!')
+    if id_categoria_int > len(function_categorias.listar_categorias()) or id_categoria_int <= 0:
+        messagebox.showerror('Erro!', 'Categoria escolhida é inválida!')
+        # print('Erro! Categoria escolhida é inválida!')
         return None
     else:
-        print('Categoria escolhida!')
+        # messagebox.showinfo('Sucesso!', 'Categoria escolhida!')
+        # print('Categoria escolhida!')
         return True
 
 # Valida se a escolha da forma de pagamento é válida ou não

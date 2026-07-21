@@ -64,8 +64,11 @@ def tela_mostrar_categoria(tela_mostrar_categoria, mostrar_tela, tela_modulo_cat
     botao_voltar.pack(pady=20)
 
 # =============== Tela Editar Categorias ===============
-def navegar_para_edicao_categoria(mostrar_tela, frame_edicao_categorias, frame_editar_categoria):
-    tela_edicao_categorias(frame_edicao_categorias, mostrar_tela, frame_editar_categoria)
+def navegar_para_edicao_categoria(escolha_editar, mostrar_tela, frame_edicao_categorias, frame_editar_categoria):
+    validacao = function_validacoes.escolha_valida_categoria(escolha_editar)
+
+    if validacao:
+        tela_edicao_categorias(frame_edicao_categorias, mostrar_tela, frame_editar_categoria)
 
 
 def tela_editar_categoria(tela_editar_categoria, mostrar_tela, tela_modulo_categoria, tela_edicao_categorias):
@@ -88,7 +91,7 @@ def tela_editar_categoria(tela_editar_categoria, mostrar_tela, tela_modulo_categ
     escolha_editar = tk.Entry(tela_editar_categoria)
     escolha_editar.pack(padx=5)
 
-    botao_escolha = tk.Button(tela_editar_categoria, text='Escolher Categoria', command=lambda: navegar_para_edicao_categoria(mostrar_tela, tela_edicao_categorias, tela_editar_categoria))
+    botao_escolha = tk.Button(tela_editar_categoria, text='Escolher Categoria', command=lambda: navegar_para_edicao_categoria(escolha_editar.get(), mostrar_tela, tela_edicao_categorias, tela_editar_categoria))
     botao_escolha.pack(pady=10)
 
     # Voltar ao Módulo
