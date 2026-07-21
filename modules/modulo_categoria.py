@@ -63,7 +63,7 @@ def tela_mostrar_categoria(tela_mostrar_categoria, mostrar_tela, tela_modulo_cat
     botao_voltar = tk.Button(tela_mostrar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
 
-# =============== Tela Editar Categorias ===============
+# # =============== Função Intermediária para Edição de Categorias ===============
 def navegar_para_edicao_categoria(escolha_editar, mostrar_tela, frame_edicao_categorias, frame_editar_categoria):
     id_validado = function_validacoes.escolha_valida_categoria(escolha_editar)
 
@@ -71,7 +71,7 @@ def navegar_para_edicao_categoria(escolha_editar, mostrar_tela, frame_edicao_cat
     if id_validado:
         tela_edicao_categorias(id_validado, frame_edicao_categorias, mostrar_tela, frame_editar_categoria)
 
-
+# =============== Tela Editar Categorias ===============
 def tela_editar_categoria(tela_editar_categoria, mostrar_tela, tela_modulo_categoria, tela_edicao_categorias):
     # Levanta a tela
     mostrar_tela(tela_editar_categoria)
@@ -138,8 +138,20 @@ def tela_apagar_categoria(tela_apagar_categoria, mostrar_tela, tela_modulo_categ
     limpar_tela(tela_apagar_categoria)
     
     # Cria os widgets novamente
-    label_apagar = tk.Label(tela_apagar_categoria, text="Categorias para Editar")
-    label_apagar.pack(pady=20)
+    label_modulo_apagar = tk.Label(tela_apagar_categoria, text="Categorias para Apagar")
+    label_modulo_apagar.pack(pady=20)
+
+    # Função de mostrar categorias na tela
+    function_categorias.mostrar_categorias(tela_apagar_categoria) 
+
+    # Escolha da Categoria
+    label_apagar = tk.Label(tela_apagar_categoria, text='Escolha uma categoria para apagar:')
+    label_apagar.pack(pady=10)
+    escolha_apagar = tk.Entry(tela_apagar_categoria)
+    escolha_apagar.pack(padx=5)
+
+    botao_apagar = tk.Button(tela_apagar_categoria, text='Apagar Categoria', command=lambda: function_categorias.apagar_categoria(escolha_apagar.get()))
+    botao_apagar.pack(pady=20)
 
     botao_voltar = tk.Button(tela_apagar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)

@@ -63,3 +63,14 @@ def editar_categoria(id_categoria, novo_nome = None, novo_tipo = None):
 
     conn.commit()
     messagebox.showinfo('Sucesso','Categoria atualizada com sucesso!')
+
+# ========== Apagar Categoria ==========
+def apagar_categoria(id_categoria):
+
+    id_categoria_valido = function_validacoes.escolha_valida_categoria(id_categoria)
+    if id_categoria_valido:
+
+        cursor.execute("DELETE FROM categoria WHERE id_categoria = ?", (id_categoria,))
+
+        conn.commit()
+        messagebox.showinfo('Sucesso!', 'Categoria apagada com sucesso!')
