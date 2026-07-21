@@ -2,6 +2,8 @@ import sqlite3
 import tkinter as tk
 from tkinter import messagebox
 
+from functions import function_validacoes
+
 conn = sqlite3.connect("financas.db")
 cursor = conn.cursor()
 
@@ -24,7 +26,7 @@ def mostrar_categorias(frame): # Mosta as Categorias
         # print(f'{cat[0]} - {cat[1]} | ({cat[2]})')
 
 # ========== Cadastrar Categoria ==========
-def cadastrar_categoria(nova_categoria, tipo_nova_categoria = None):
+def cadastrar_categoria(nova_categoria, tipo_nova_categoria):
 
     if nova_categoria == '':
         messagebox.showwarning('Erro', 'Nome da categoria não pode ser vazio')
@@ -32,8 +34,12 @@ def cadastrar_categoria(nova_categoria, tipo_nova_categoria = None):
         # print('Categoria não adicionada!')
         return
     
-    cursor.execute("INSERT INTO categoria (nome, tipo_padrao) VALUES (?, ?)", (nova_categoria, tipo_nova_categoria))
+    tipo_nova_categoria_valido = function_validacoes.despesa_ou_receita(tipo_nova_categoria)
+    if tipo_nova_categoria_valido == None:
+        return
+    
+    cursor.execute("INSERT INTO categoria (nome, tipo_padrao) VALUES (?, ?)", (nova_categoria, tipo_nova_categoria_valido))
 
     conn.commit()
     # print('Categoria adicionada com sucesso!')
-    messagebox.showwarning('Sucesso','Categoria adicionada com sucesso!')
+    messagebox.showinfo('Sucesso','Categoria adicionada com sucesso!')

@@ -78,11 +78,12 @@ def entrada_ou_saida(entrada_saida_sem_acento=str):
 # Valida se o tipo é despesa ou receita
 def despesa_ou_receita(tipo_categoria=str):
     if tipo_categoria != 'despesa' and tipo_categoria != 'receita':
-        print('Digite um tipo válido (Despesa ou Receita)!')
+        # print('Digite um tipo válido (Despesa ou Receita)!')
+        messagebox.showerror('Erro','Digite um tipo válido (Despesa ou Receita)!')
         return None
     
     else:
-        print('Tipo salvo com sucesso!')
+        # print('Tipo salvo com sucesso!')
         return tipo_categoria.capitalize()
     
 # Valida Valores de entrada e saída
