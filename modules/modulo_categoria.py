@@ -1,4 +1,5 @@
 import tkinter as tk
+from functions import function_categorias
 
 # Função para limpar os widgets da tela
 def limpar_tela(tela):
@@ -43,7 +44,8 @@ def tela_mostrar_categoria(tela_mostrar_categoria, mostrar_tela, tela_modulo_cat
     label_mostrar = tk.Label(tela_mostrar_categoria, text="Categorias")
     label_mostrar.pack(pady=20)
 
-    # mostrar_categorias(tela_mostrar_categoria) 
+    # Função de mostrar categorias na tela
+    function_categorias.mostrar_categorias(tela_mostrar_categoria) 
 
     botao_voltar = tk.Button(tela_mostrar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
