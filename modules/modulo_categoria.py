@@ -63,11 +63,10 @@ def tela_mostrar_categoria(tela_mostrar_categoria, mostrar_tela, tela_modulo_cat
     botao_voltar = tk.Button(tela_mostrar_categoria, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_categoria))
     botao_voltar.pack(pady=20)
 
-# # =============== Função Intermediária para Edição de Categorias ===============
+# =============== Função Intermediária para Edição de Categorias ===============
 def navegar_para_edicao_categoria(escolha_editar, mostrar_tela, frame_edicao_categorias, frame_editar_categoria):
     id_validado = function_validacoes.escolha_valida_categoria(escolha_editar)
 
-    print(id_validado)
     if id_validado:
         tela_edicao_categorias(id_validado, frame_edicao_categorias, mostrar_tela, frame_editar_categoria)
 

@@ -4,7 +4,7 @@ from tkinter import messagebox
 from datetime import datetime
 
 from functions import function_categorias
-# from functions import forma_pagamento, transacoes
+from functions import function_forma_pagamento
 
 # Valida se valor que deveria ser int é realmente int
 def str_para_int(valor_str):
@@ -25,6 +25,7 @@ def str_para_float(valor_str):
 # Valida se a escolha da categoria é válida ou não
 def escolha_valida_categoria(id_categoria):
     id_categoria_int = str_para_int(id_categoria)
+
     if id_categoria_int == None:
         messagebox.showerror('Erro!', 'Categoria escolhida é inválida!')
         return None
@@ -38,16 +39,18 @@ def escolha_valida_categoria(id_categoria):
     return id_categoria_int
 
 # Valida se a escolha da forma de pagamento é válida ou não
-# def escolha_valida_forma_pagamento(id_forma_pagamento):
-#     if id_forma_pagamento == None:
-#         print('Erro! Forma de pagamento escolhida é inválida!')
-#         return None
-#     if id_forma_pagamento > len(forma_pagamento.listar_forma_pagamento()) or id_forma_pagamento <= 0:
-#         print('Erro! Forma de pagamento escolhida é inválida!')
-#         return None
-#     else:
-#         print('Forma de pagamento escolhida!')
-#         return True
+def escolha_valida_forma_pagamento(id_forma_pagamento):
+    id_forma_pagamento_int = str_para_int(id_forma_pagamento)
+
+    if id_forma_pagamento_int == None:
+        messagebox.showerror('Erro!', 'Forma de pagamento escolhida é inválida!')
+        return None
+    
+    if id_forma_pagamento_int > len(function_forma_pagamento.listar_forma_pagamento()) or id_forma_pagamento_int <= 0:
+        messagebox.showerror('Erro!', 'Forma de pagamento escolhida é inválida!')
+        return None
+    
+    return id_forma_pagamento_int
     
 # # Valida se a escolha da transação é válida ou não
 # def escolha_valida_transacao(id_transacao):

@@ -33,3 +33,20 @@ def cadastrar_forma_pagamento(nova_forma_pagamento):
 
     conn.commit()
     messagebox.showinfo('Sucesso!', 'Forma de Pagamento adicionada com sucesso!')
+
+# ========== Editar Forma de Pagamento ==========
+def editar_forma_pagamento(id_forma_pagamento, novo_nome = None):
+
+    id_forma_pagamento_valido = function_validacoes.str_para_int(id_forma_pagamento)
+    if id_forma_pagamento_valido == None:
+        return
+
+    if novo_nome:
+        cursor.execute("UPDATE forma_pagamento SET nome = ? WHERE id_forma_pagamento = ?", (novo_nome, id_forma_pagamento_valido))
+        
+    else:
+        messagebox.showerror('Erro', 'Nenhuma alteração foi informada!')
+        return
+    
+    conn.commit()
+    messagebox.showinfo('Sucesso!', 'Forma de Pagamento alterada com sucesso!')

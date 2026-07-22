@@ -37,6 +37,7 @@ frame_modulo_forma_pagamento = criar_tela(janela_principal)
 frame_cadastrar_forma_pagamento = criar_tela(janela_principal)
 frame_mostrar_forma_pagamento = criar_tela(janela_principal)
 frame_editar_forma_pagamento = criar_tela(janela_principal)
+frame_edicao_forma_pagamento = criar_tela(janela_principal)
 frame_apagar_forma_pagamento = criar_tela(janela_principal)
 
 # ==============================================
@@ -57,17 +58,43 @@ botao_modulo_forma_pagamento.pack()
 # ========================================================
 # =================== Módulo Transação ===================
 # ========================================================
-modulo_transacao.tela_modulo_transacao(frame_modulo_transacao, mostrar_tela, frame_menu_principal, frame_cadastrar_transacao, frame_mostrar_transacoes, frame_editar_transacao, frame_apagar_transacao)
+modulo_transacao.tela_modulo_transacao(
+    frame_modulo_transacao, 
+    mostrar_tela, 
+    frame_menu_principal, 
+    frame_cadastrar_transacao, 
+    frame_mostrar_transacoes, 
+    frame_editar_transacao, 
+    frame_apagar_transacao
+)
 
 # ========================================================
 # =================== Módulo Categoria ===================
 # ========================================================
-modulo_categoria.tela_modulo_categoria(frame_modulo_categoria, mostrar_tela, frame_menu_principal, frame_mostrar_categorias, frame_cadastrar_categoria, frame_editar_categoria, frame_edicao_categorias, frame_apagar_categoria)
+modulo_categoria.tela_modulo_categoria(
+    frame_modulo_categoria, 
+    mostrar_tela, 
+    frame_menu_principal, 
+    frame_mostrar_categorias, 
+    frame_cadastrar_categoria, 
+    frame_editar_categoria, 
+    frame_edicao_categorias, 
+    frame_apagar_categoria
+)
 
 # =========================================================
 # =============== Módulo Forma de Pagamento ===============
 # =========================================================
-modulo_forma_pagamento.tela_modulo_forma_pagamento(frame_modulo_forma_pagamento, mostrar_tela, frame_menu_principal, frame_cadastrar_forma_pagamento, frame_mostrar_forma_pagamento, frame_editar_forma_pagamento, frame_apagar_forma_pagamento)
+modulo_forma_pagamento.tela_modulo_forma_pagamento(
+    frame_modulo_forma_pagamento, 
+    mostrar_tela, 
+    frame_menu_principal, 
+    frame_cadastrar_forma_pagamento, 
+    frame_mostrar_forma_pagamento, 
+    frame_editar_forma_pagamento,
+    frame_edicao_forma_pagamento, 
+    frame_apagar_forma_pagamento
+)
 
 # 
 mostrar_tela(frame_menu_principal)
