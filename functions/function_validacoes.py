@@ -27,16 +27,16 @@ def escolha_valida_categoria(id_categoria):
     id_categoria_int = str_para_int(id_categoria)
     if id_categoria_int == None:
         messagebox.showerror('Erro!', 'Categoria escolhida é inválida!')
-        # print('Erro! Categoria escolhida é inválida!')
         return None
-    if id_categoria_int > len(function_categorias.listar_categorias()) or id_categoria_int <= 0:
+
+    ids_existentes = [cat[0] for cat in function_categorias.listar_categorias()]
+    print(ids_existentes)
+
+    if id_categoria_int not in ids_existentes:
         messagebox.showerror('Erro!', 'Categoria escolhida é inválida!')
-        # print('Erro! Categoria escolhida é inválida!')
         return None
-    else:
-        # messagebox.showinfo('Sucesso!', 'Categoria escolhida!')
-        # print('Categoria escolhida!')
-        return id_categoria_int
+    
+    return id_categoria_int
 
 # Valida se a escolha da forma de pagamento é válida ou não
 # def escolha_valida_forma_pagamento(id_forma_pagamento):

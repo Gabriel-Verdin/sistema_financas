@@ -71,3 +71,5 @@ def inicializar_banco():
     inserir_dados_padrao()
 
     print('Banco inicializado com sucesso!')
+
+inicializar_banco()
