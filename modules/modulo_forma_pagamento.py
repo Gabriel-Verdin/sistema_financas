@@ -39,6 +39,8 @@ def tela_mostrar_forma_pagamento(tela_mostrar_forma_pagamento, mostrar_tela, tel
     label_cadastro = tk.Label(tela_mostrar_forma_pagamento, text='Formas de Pagamento')
     label_cadastro.pack(pady=20)
 
+    function_forma_pagamento.mostrar_forma_pagamento(tela_mostrar_forma_pagamento)
+
     botao_voltar = tk.Button(tela_mostrar_forma_pagamento, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_forma_pagamento))
     botao_voltar.pack(pady=20)
 
