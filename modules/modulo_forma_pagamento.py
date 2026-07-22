@@ -1,9 +1,16 @@
 import tkinter as tk
 
+from functions import function_forma_pagamento
+from functions import function_validacoes
+
 # Função para limpar os widgets da tela
 def limpar_tela(tela):
     for widget in tela.winfo_children():
         widget.destroy()
+
+# =================
+# ===== Telas =====
+# =================
 
 # =============== Tela Cadastrar Formas de Pagamento ===============
 def tela_cadastrar_forma_pagamento(tela_cadastrar_forma_pagamento, mostrar_tela, tela_modulo_forma_pagamento):

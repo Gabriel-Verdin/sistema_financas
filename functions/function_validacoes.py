@@ -30,7 +30,6 @@ def escolha_valida_categoria(id_categoria):
         return None
 
     ids_existentes = [cat[0] for cat in function_categorias.listar_categorias()]
-    print(ids_existentes)
 
     if id_categoria_int not in ids_existentes:
         messagebox.showerror('Erro!', 'Categoria escolhida é inválida!')
@@ -82,12 +81,10 @@ def entrada_ou_saida(entrada_saida_sem_acento=str):
 # Valida se o tipo é despesa ou receita
 def despesa_ou_receita(tipo_categoria=str):
     if tipo_categoria != 'despesa' and tipo_categoria != 'receita':
-        # print('Digite um tipo válido (Despesa ou Receita)!')
         messagebox.showerror('Erro','Digite um tipo válido (Despesa ou Receita)!')
         return None
     
     else:
-        # print('Tipo salvo com sucesso!')
         return tipo_categoria.capitalize()
     
 # Valida Valores de entrada e saída
