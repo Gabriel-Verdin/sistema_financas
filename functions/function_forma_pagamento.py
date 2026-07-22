@@ -21,3 +21,15 @@ def mostrar_forma_pagamento(frame):
 
     for forma in formas_pagamento:
         lista.insert(tk.END, f'{forma[0]} - {forma[1]}')
+
+# ========== Cadastrar Forma de Pagamento ==========
+def cadastrar_forma_pagamento(nova_forma_pagamento):
+
+    if nova_forma_pagamento == '':
+        messagebox.showerror('Erro', 'Nome da forma de pagamento não pode ser vazio!')
+        return
+
+    cursor.execute(f"INSERT INTO forma_pagamento (nome) VALUES ('{nova_forma_pagamento}')")
+
+    conn.commit()
+    messagebox.showinfo('Sucesso!', 'Forma de Pagamento adicionada com sucesso!')

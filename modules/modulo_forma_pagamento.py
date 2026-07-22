@@ -24,6 +24,14 @@ def tela_cadastrar_forma_pagamento(tela_cadastrar_forma_pagamento, mostrar_tela,
     label_cadastro = tk.Label(tela_cadastrar_forma_pagamento, text='Cadastro de Forma de Pagamento')
     label_cadastro.pack(pady=20)
 
+    label_nome = tk.Label(tela_cadastrar_forma_pagamento, text='Nome da Forma de Pagamento:')
+    label_nome.pack(pady=10)
+    nome_forma_pagamento = tk.Entry(tela_cadastrar_forma_pagamento)
+    nome_forma_pagamento.pack(pady=10)
+
+    botao_cadastrar = tk.Button(tela_cadastrar_forma_pagamento, text='Cadastrar Forma de Pagamento', command=lambda: function_forma_pagamento.cadastrar_forma_pagamento(nome_forma_pagamento.get()))
+    botao_cadastrar.pack(pady=5)
+
     botao_voltar = tk.Button(tela_cadastrar_forma_pagamento, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_forma_pagamento))
     botao_voltar.pack(pady=20)
 
