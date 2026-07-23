@@ -62,6 +62,14 @@ def inserir_dados_padrao():
     INSERT INTO transacao (data, descricao, id_categoria, id_forma_pagamento, valor, entrada_saida)
     VALUES ('20-06-2026', 'Uber para CET', 1, 1, 30.00, 'Saida')
     """)
+    cursor.execute("""
+    INSERT INTO transacao (data, descricao, id_categoria, id_forma_pagamento, valor, entrada_saida)
+    VALUES ('20-07-2026', 'Ifood', 3, 2, 96.42, 'Saida')
+    """)
+    cursor.execute("""
+    INSERT INTO transacao (data, descricao, id_categoria, id_forma_pagamento, valor, entrada_saida)
+    VALUES ('05-07-2026', 'Salario dia 5', 2, 3, 1100, 'Entrada')
+    """)
     conn.commit()
 
 def inicializar_banco():
