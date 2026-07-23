@@ -20,18 +20,15 @@ def mostrar_categorias(frame): # Mosta as Categorias
     lista = tk.Listbox(frame, width=50)
     lista.pack(pady=10)
 
-    # print('Categorias Disponíveis:')
     for cat in categorias:
         lista.insert(tk.END, f'{cat[0]} - {cat[1]} | ({cat[2]})')
-        # print(f'{cat[0]} - {cat[1]} | ({cat[2]})')
 
 # ========== Cadastrar Categoria ==========
 def cadastrar_categoria(nova_categoria, tipo_nova_categoria):
 
     if nova_categoria == '':
         messagebox.showwarning('Erro', 'Nome da categoria não pode ser vazio')
-        # print('Nome da categoria não pode ser Vazio!')
-        # print('Categoria não adicionada!')
+
         return
     
     tipo_nova_categoria_valido = function_validacoes.despesa_ou_receita(tipo_nova_categoria)

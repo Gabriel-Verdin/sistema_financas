@@ -1,5 +1,7 @@
 import tkinter as tk
 
+from functions import function_transacoes
+
 # Função para limpar os widgets da tela
 def limpar_tela(tela):
     for widget in tela.winfo_children():
@@ -31,6 +33,8 @@ def tela_mostrar_transacao(tela_mostrar_transacao, mostrar_tela, tela_modulo_tra
     # Cria os widgets novamente
     label_mostrar = tk.Label(tela_mostrar_transacao, text='Transações')
     label_mostrar.pack(pady=20)
+
+    function_transacoes.mostrar_transacoes(tela_mostrar_transacao)
 
     botao_voltar = tk.Button(tela_mostrar_transacao, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_transacao))
     botao_voltar.pack(pady=20)
