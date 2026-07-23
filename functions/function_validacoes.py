@@ -45,8 +45,10 @@ def escolha_valida_forma_pagamento(id_forma_pagamento):
     if id_forma_pagamento_int == None:
         messagebox.showerror('Erro!', 'Forma de pagamento escolhida é inválida!')
         return None
+
+    ids_existentes = [forma[0] for forma in function_forma_pagamento.listar_forma_pagamento()]
     
-    if id_forma_pagamento_int > len(function_forma_pagamento.listar_forma_pagamento()) or id_forma_pagamento_int <= 0:
+    if id_forma_pagamento_int not in ids_existentes:
         messagebox.showerror('Erro!', 'Forma de pagamento escolhida é inválida!')
         return None
     

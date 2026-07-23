@@ -50,3 +50,14 @@ def editar_forma_pagamento(id_forma_pagamento, novo_nome = None):
     
     conn.commit()
     messagebox.showinfo('Sucesso!', 'Forma de Pagamento alterada com sucesso!')
+
+# ========== Apagar Forma de Pagamento ==========
+def apagar_forma_pagamento(id_forma_pagamento):
+
+    id_forma_pagamento_valido = function_validacoes.escolha_valida_forma_pagamento(id_forma_pagamento)
+    if id_forma_pagamento_valido:
+
+        cursor.execute("DELETE FROM forma_pagamento WHERE id_forma_pagamento = ?", (id_forma_pagamento,))
+
+        conn.commit()
+        messagebox.showinfo('Sucesso!', 'Forma de Pagamento apagada com sucesso!')

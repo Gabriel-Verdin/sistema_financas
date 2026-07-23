@@ -123,6 +123,18 @@ def tela_apagar_forma_pagamento(tela_apagar_forma_pagamento, mostrar_tela, tela_
     label_cadastro = tk.Label(tela_apagar_forma_pagamento, text='Formas de Pagamento para Apagar')
     label_cadastro.pack(pady=20)
 
+    # Função de mostrar formas de pagamento na tela
+    function_forma_pagamento.mostrar_forma_pagamento(tela_apagar_forma_pagamento) 
+    
+    # Escolha da Forma de Pagamento
+    label_apagar = tk.Label(tela_apagar_forma_pagamento, text='Escolha uma Forma de Pagamento para apagar:')
+    label_apagar.pack(pady=10)
+    escolha_apagar = tk.Entry(tela_apagar_forma_pagamento)
+    escolha_apagar.pack(padx=5)
+    
+    botao_apagar = tk.Button(tela_apagar_forma_pagamento, text='Apagar Forma de Pagamento', command=lambda: function_forma_pagamento.apagar_forma_pagamento(escolha_apagar.get()))
+    botao_apagar.pack(pady=20)
+
     botao_voltar = tk.Button(tela_apagar_forma_pagamento, text='Voltar ao Módulo', command=lambda: mostrar_tela(tela_modulo_forma_pagamento))
     botao_voltar.pack(pady=20)
 
